@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com+">
-  <title>MySQL基础篇 | Hexo</title>
+  <title>MySQL进阶篇 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="进阶篇存储引擎MySQL体系结构  简介存储引擎就是存储数据、建立索引更新&#x2F;查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型。   在创建表时，指定存储引擎   2.查看当前数据库支持的存储引擎  特点innoDBInnoDB是一种兼顾高可靠性和高性能的通用存储引擎，在MySQL 5.5之后，InnoDB是默认的MySQL存储引擎。 特点 DML">
+  <meta name="description" content="基于基础篇更加细致的MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL基础篇">
+<meta property="og:title" content="MySQL进阶篇">
 <meta property="og:url" content="http://example.com+/2022/10/06/MySQL%E8%BF%9B%E9%98%B6%E7%AF%87/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="进阶篇存储引擎MySQL体系结构  简介存储引擎就是存储数据、建立索引更新&#x2F;查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型。   在创建表时，指定存储引擎   2.查看当前数据库支持的存储引擎  特点innoDBInnoDB是一种兼顾高可靠性和高性能的通用存储引擎，在MySQL 5.5之后，InnoDB是默认的MySQL存储引擎。 特点 DML">
+<meta property="og:description" content="基于基础篇更加细致的MySQL">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com+/image/image_NBWHBI_fEf.png">
 <meta property="og:image" content="http://example.com+/image/image_2kYk0-dzcv.png">
@@ -144,7 +144,7 @@
 <meta property="og:image" content="http://example.com+/image/image_0Id3sgW_zN.png">
 <meta property="og:image" content="http://example.com+/image/image_ql-fZdcQ0F.png">
 <meta property="article:published_time" content="2022-10-06T03:09:53.000Z">
-<meta property="article:modified_time" content="2022-10-24T09:16:35.386Z">
+<meta property="article:modified_time" content="2022-10-24T09:24:42.894Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com+/image/image_NBWHBI_fEf.png">
@@ -286,7 +286,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL基础篇
+      MySQL进阶篇
     </h1>
   
 
@@ -299,7 +299,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h1><h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="MySQL体系结构"><a href="#MySQL体系结构" class="headerlink" title="MySQL体系结构"></a>MySQL体系结构</h2><p><img src="/image/image_NBWHBI_fEf.png"></p>
+        <p>基于基础篇更加细致的MySQL</p>
+<span id="more"></span>
+<h1 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h1><h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="MySQL体系结构"><a href="#MySQL体系结构" class="headerlink" title="MySQL体系结构"></a>MySQL体系结构</h2><p><img src="/image/image_NBWHBI_fEf.png"></p>
 <p><img src="/image/image_2kYk0-dzcv.png"></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>存储引擎就是存储数据、建立索引更新&#x2F;查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型</strong>。</p>
 <hr>
@@ -1577,7 +1579,7 @@
 <p><img src="/image/image_cqyL1cLLho.png"></p>
 <ul>
 <li><p>实例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysq1 <span class="operator">-</span>h192<span class="number">.168</span><span class="number">.200</span><span class="number">.202</span> <span class="operator">-</span>P3306 <span class="operator">-</span>uroot <span class="operator">-</span>p1234 itcast <span class="operator">-</span>e &quot;select*from stu;&quot;</span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysq1 <span class="operator">-</span>h192<span class="number">.168</span><span class="number">.200</span><span class="number">.202</span> <span class="operator">-</span>P3306 <span class="operator">-</span>uroot <span class="operator">-</span>p1234 itcast <span class="operator">-</span>e &quot;select*from stu;&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>mysqladmin</strong></p>
@@ -1585,7 +1587,7 @@
 <p><img src="/image/image_pvn2dUoYBt.png"></p>
 <ul>
 <li><p>实例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#查看帮助文档</span><br><span class="line">mysqladmin <span class="comment">--help</span></span><br><span class="line">#查看版本信息</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 version;</span><br><span class="line">#查看变量信息</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 variables;</span><br><span class="line">#创建数据库</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="keyword">create</span> db02;</span><br><span class="line">#查看数据库</span><br><span class="line">mysq1 <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>e<span class="string">&#x27;show databases&#x27;</span>;</span><br><span class="line">#删除数据库</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="keyword">drop</span> db02;</span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#查看帮助文档</span><br><span class="line">mysqladmin <span class="comment">--help</span></span><br><span class="line">#查看版本信息</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 version;</span><br><span class="line">#查看变量信息</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 variables;</span><br><span class="line">#创建数据库</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="keyword">create</span> db02;</span><br><span class="line">#查看数据库</span><br><span class="line">mysq1 <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>e<span class="string">&#x27;show databases&#x27;</span>;</span><br><span class="line">#删除数据库</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="keyword">drop</span> db02;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>mysqlbinlog</strong></p>
@@ -1600,7 +1602,7 @@
 <p><img src="/image/image_lnDzU7Rr9P.png"></p>
 <ul>
 <li><p>实例</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#备份数据库</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 db01 <span class="operator">&gt;</span> db01.sql;</span><br><span class="line">#备份数据库，不包含建表语句</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>t db01 <span class="operator">&gt;</span> db01.sql;</span><br><span class="line">#只备份了数据库的表结构，不包含数据</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>d db01 <span class="operator">&gt;</span> db01.sql;</span><br><span class="line">#自动生成两个文件:一个.<span class="keyword">sql</span>文件，创建表结构的语句;一个.txt文件，数据文件</span><br><span class="line">mysq1dump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>T <span class="operator">/</span>var<span class="operator">/</span><span class="number">1</span>ib<span class="operator">/</span>mysq1<span class="operator">-</span>files<span class="operator">/</span> db01 score</span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#备份数据库</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 db01 <span class="operator">&gt;</span> db01.sql;</span><br><span class="line">#备份数据库，不包含建表语句</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>t db01 <span class="operator">&gt;</span> db01.sql;</span><br><span class="line">#只备份了数据库的表结构，不包含数据</span><br><span class="line">mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>d db01 <span class="operator">&gt;</span> db01.sql;</span><br><span class="line">#自动生成两个文件:一个.<span class="keyword">sql</span>文件，创建表结构的语句;一个.txt文件，数据文件</span><br><span class="line">mysq1dump <span class="operator">-</span>uroot <span class="operator">-</span>p1234 <span class="operator">-</span>T <span class="operator">/</span>var<span class="operator">/</span><span class="number">1</span>ib<span class="operator">/</span>mysq1<span class="operator">-</span>files<span class="operator">/</span> db01 score</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>mysqlimport</strong></p>
@@ -1608,7 +1610,7 @@
 <p><img src="/image/image_GMq415WOxY.png"></p>
 <ul>
 <li><p><strong>实例</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#还原数据</span><br><span class="line">mysqlimport <span class="operator">-</span>uroot <span class="operator">-</span>p1234 db01 <span class="operator">/</span>var<span class="operator">/</span><span class="number">1</span>ib<span class="operator">/</span>mysq1<span class="operator">-</span>files<span class="operator">/</span>score.txt</span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#还原数据</span><br><span class="line">mysqlimport <span class="operator">-</span>uroot <span class="operator">-</span>p1234 db01 <span class="operator">/</span>var<span class="operator">/</span><span class="number">1</span>ib<span class="operator">/</span>mysq1<span class="operator">-</span>files<span class="operator">/</span>score.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>source</strong></p>
@@ -1714,11 +1716,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/10/06/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/10/06/C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B(1)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          MySQL基础篇
+          C++核心编程
         
       </div>
     </a>
