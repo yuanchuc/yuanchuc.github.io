@@ -6,15 +6,148 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com+">
-  <title>Hexo</title>
+  <title>MySQL基础篇 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com+/index.html">
+  <meta name="description" content="进阶篇存储引擎MySQL体系结构  简介存储引擎就是存储数据、建立索引更新&#x2F;查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型。   在创建表时，指定存储引擎   2.查看当前数据库支持的存储引擎  特点innoDBInnoDB是一种兼顾高可靠性和高性能的通用存储引擎，在MySQL 5.5之后，InnoDB是默认的MySQL存储引擎。 特点 DML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础篇">
+<meta property="og:url" content="http://example.com+/2022/10/06/MySQL%E8%BF%9B%E9%98%B6%E7%AF%87/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="进阶篇存储引擎MySQL体系结构  简介存储引擎就是存储数据、建立索引更新&#x2F;查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型。   在创建表时，指定存储引擎   2.查看当前数据库支持的存储引擎  特点innoDBInnoDB是一种兼顾高可靠性和高性能的通用存储引擎，在MySQL 5.5之后，InnoDB是默认的MySQL存储引擎。 特点 DML">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com+/image/image_NBWHBI_fEf.png">
+<meta property="og:image" content="http://example.com+/image/image_2kYk0-dzcv.png">
+<meta property="og:image" content="http://example.com+/image/image_v3QFDs3Xra.png">
+<meta property="og:image" content="http://example.com+/image/image_ZRMOZJM8zr.png">
+<meta property="og:image" content="http://example.com+/image/image_BPTkUpKFZ2.png">
+<meta property="og:image" content="http://example.com+/image/image_GXL4-eO5rP.png">
+<meta property="og:image" content="http://example.com+/image/image_aibKHx3-Ko.png">
+<meta property="og:image" content="http://example.com+/image/image_ZntaOU-YjG.png">
+<meta property="og:image" content="http://example.com+/image/image_czHEmxiEX6.png">
+<meta property="og:image" content="http://example.com+/image/image_x4pzGtOjay.png">
+<meta property="og:image" content="http://example.com+/image/image_Nkiqef-2Xg.png">
+<meta property="og:image" content="http://example.com+/image/image_tmEaQcfDpZ.png">
+<meta property="og:image" content="http://example.com+/image/image_ulA2DQ4-qb.png">
+<meta property="og:image" content="http://example.com+/image/image_aL-wYcCx2e.png">
+<meta property="og:image" content="http://example.com+/image/image_TJUM7j76MK.png">
+<meta property="og:image" content="http://example.com+/image/image_ls5nFTjf3A.png">
+<meta property="og:image" content="http://example.com+/image/image_ezAkFLmhvj.png">
+<meta property="og:image" content="http://example.com+/image/image_gJtyB1ojbf.png">
+<meta property="og:image" content="http://example.com+/image/image_BTC95XidrO.png">
+<meta property="og:image" content="http://example.com+/image/image_j74tzEZJyM.png">
+<meta property="og:image" content="http://example.com+/image/image_hC5Jcy4O4K.png">
+<meta property="og:image" content="http://example.com+/image/image_VtezWhncY6.png">
+<meta property="og:image" content="http://example.com+/image/image_eAAfp0zjFi.png">
+<meta property="og:image" content="http://example.com+/image/image_A_7H9dv_je.png">
+<meta property="og:image" content="http://example.com+/image/image_KmzcBlpZ74.png">
+<meta property="og:image" content="http://example.com+/image/image_h-8_HvdJeB.png">
+<meta property="og:image" content="http://example.com+/image/image_ZBWduFR_Co.png">
+<meta property="og:image" content="http://example.com+/image/image_GFRRF4RQEw.png">
+<meta property="og:image" content="http://example.com+/image/image_MdlUNTg_7d.png">
+<meta property="og:image" content="http://example.com+/image/image_pWo4fdBTh_.png">
+<meta property="og:image" content="http://example.com+/image/image_0qZmyqyri8.png">
+<meta property="og:image" content="http://example.com+/image/image_EUTn6MxG2J.png">
+<meta property="og:image" content="http://example.com+/image/image_xHpA0uR-zD.png">
+<meta property="og:image" content="http://example.com+/image/image_jRODqKNgH9.png">
+<meta property="og:image" content="http://example.com+/image/image_Bh5jibI1Lm.png">
+<meta property="og:image" content="http://example.com+/image/image_2FXmzJPfgf.png">
+<meta property="og:image" content="http://example.com+/image/image_ta5Te1a4r3.png">
+<meta property="og:image" content="http://example.com+/image/image_ZzFfN8cBkM.png">
+<meta property="og:image" content="http://example.com+/image/image_zEYORU3gFu.png">
+<meta property="og:image" content="http://example.com+/image/image_iW3r_nj4-q.png">
+<meta property="og:image" content="http://example.com+/image/image_fnywNl8Lty.png">
+<meta property="og:image" content="http://example.com+/image/image_rNEUl1unWu.png">
+<meta property="og:image" content="http://example.com+/image/image_LF684aoHIJ.png">
+<meta property="og:image" content="http://example.com+/image/image_DSdW0JyUB5.png">
+<meta property="og:image" content="http://example.com+/image/image_gumO2enHSZ.png">
+<meta property="og:image" content="http://example.com+/image/image_JPghJTIi0L.png">
+<meta property="og:image" content="http://example.com+/image/image_c8fXm896ax.png">
+<meta property="og:image" content="http://example.com+/image/image_2yCHzezw_0.png">
+<meta property="og:image" content="http://example.com+/image/image_EWADc6OgsR.png">
+<meta property="og:image" content="http://example.com+/image/image_hDXO-pnSNH.png">
+<meta property="og:image" content="http://example.com+/image/image_MPKoYCdK82.png">
+<meta property="og:image" content="http://example.com+/image/image_IQHv6vm6_c.png">
+<meta property="og:image" content="http://example.com+/image/image_BviXLyPNQq.png">
+<meta property="og:image" content="http://example.com+/image/image_9Y74QVeeXL.png">
+<meta property="og:image" content="http://example.com+/image/image_7vk3eXD1ft.png">
+<meta property="og:image" content="http://example.com+/image/image_6R4t2aiwX8.png">
+<meta property="og:image" content="http://example.com+/image/image_aBiey5Tx0R.png">
+<meta property="og:image" content="http://example.com+/image/image__Qsx9X9Z60.png">
+<meta property="og:image" content="http://example.com+/image/image_jJh5VWLnm6.png">
+<meta property="og:image" content="http://example.com+/image/image_cMzyMA3ojU.png">
+<meta property="og:image" content="http://example.com+/image/image_05Jxz10lHD.png">
+<meta property="og:image" content="http://example.com+/image/image_rm4-SJU5i4.png">
+<meta property="og:image" content="http://example.com+/image/image_FTifG6Rv2F.png">
+<meta property="og:image" content="http://example.com+/image/image_d-LVCsHPEl.png">
+<meta property="og:image" content="http://example.com+/image/image_dTjB4VqG5j.png">
+<meta property="og:image" content="http://example.com+/image/image_F9drjZCpfd.png">
+<meta property="og:image" content="http://example.com+/image/image_Z-Q8KWhZ_b.png">
+<meta property="og:image" content="http://example.com+/image/image_C9NSV072XM.png">
+<meta property="og:image" content="http://example.com+/image/image_vpzosqo4wn.png">
+<meta property="og:image" content="http://example.com+/image/image_5l094rm7Yy.png">
+<meta property="og:image" content="http://example.com+/image/image_N7MtEoogsb.png">
+<meta property="og:image" content="http://example.com+/image/image_m-vSIT_JGT.png">
+<meta property="og:image" content="http://example.com+/image/image_P7s0yc4a1d.png">
+<meta property="og:image" content="http://example.com+/image/image_C5_RlbraAt.png">
+<meta property="og:image" content="http://example.com+/image/image_uja41Y_Bfr.png">
+<meta property="og:image" content="http://example.com+/image/image_N6e3BW4P1z.png">
+<meta property="og:image" content="http://example.com+/image/image_EnCzsh2k9Z.png">
+<meta property="og:image" content="http://example.com+/image/image_EYjhDQEwfJ.png">
+<meta property="og:image" content="http://example.com+/image/image_q-ZjpLrcBT.png">
+<meta property="og:image" content="http://example.com+/image/image_3uCxN9IFXA.png">
+<meta property="og:image" content="http://example.com+/image/image_PcTPMh3gMr.png">
+<meta property="og:image" content="http://example.com+/image/image_POp6KYfqIr.png">
+<meta property="og:image" content="http://example.com+/image/image_DnZDnIntrx.png">
+<meta property="og:image" content="http://example.com+/image/image_FdSrYKzS_r.png">
+<meta property="og:image" content="http://example.com+/image/image_GcOqwKVbCj.png">
+<meta property="og:image" content="http://example.com+/image/image_0A2bGvpeBy.png">
+<meta property="og:image" content="http://example.com+/image/image_VNJnB9aDQd.png">
+<meta property="og:image" content="http://example.com+/image/image_VrmzkC9yJv.png">
+<meta property="og:image" content="http://example.com+/image/image_O6exo7RiBk.png">
+<meta property="og:image" content="http://example.com+/image/image_CxvId-fPfB.png">
+<meta property="og:image" content="http://example.com+/image/image_pRXassCPWA.png">
+<meta property="og:image" content="http://example.com+/image/image_UDjbfhsnae.png">
+<meta property="og:image" content="http://example.com+/image/image_jSrVOKi2_x.png">
+<meta property="og:image" content="http://example.com+/image/image_P4-KfudbrH.png">
+<meta property="og:image" content="http://example.com+/image/image_jAb6KcsvRn.png">
+<meta property="og:image" content="http://example.com+/image/image_U5rbzv4NrW.png">
+<meta property="og:image" content="http://example.com+/image/image_3PZmeg2TN6.png">
+<meta property="og:image" content="http://example.com+/image/image_RPWwSeZ2TX.png">
+<meta property="og:image" content="http://example.com+/image/image_JG6ymGoWny.png">
+<meta property="og:image" content="http://example.com+/image/image_Obi7T9lpeX.png">
+<meta property="og:image" content="http://example.com+/image/image_qvmQJOf8IK.png">
+<meta property="og:image" content="http://example.com+/image/image_AfrKTk-7_T.png">
+<meta property="og:image" content="http://example.com+/image/image_CVue0EtHPE.png">
+<meta property="og:image" content="http://example.com+/image/image_6fnpndWY04.png">
+<meta property="og:image" content="http://example.com+/image/image_vCH_jgZV9W.png">
+<meta property="og:image" content="http://example.com+/image/image_OdM54WofKa.png">
+<meta property="og:image" content="http://example.com+/image/image_lzx25cwUaL.png">
+<meta property="og:image" content="http://example.com+/image/image_Pos2uFOkMv.png">
+<meta property="og:image" content="http://example.com+/image/image_MtlwKhn9hr.png">
+<meta property="og:image" content="http://example.com+/image/image_mmwtumU4nd.png">
+<meta property="og:image" content="http://example.com+/image/image_MTU90ll8mH.png">
+<meta property="og:image" content="http://example.com+/image/image_mtem2AFlnk.png">
+<meta property="og:image" content="http://example.com+/image/image_P70joqrhjt.png">
+<meta property="og:image" content="http://example.com+/image/image_3i9TJxbi-D.png">
+<meta property="og:image" content="http://example.com+/image/image_nTZDuY4WFT.png">
+<meta property="og:image" content="http://example.com+/image/image_dHy71FuVdM.png">
+<meta property="og:image" content="http://example.com+/image/image_PciNYWQtyv.png">
+<meta property="og:image" content="http://example.com+/image/image_i5e9brv_vt.png">
+<meta property="og:image" content="http://example.com+/image/image_-wfty3Vn93.png">
+<meta property="og:image" content="http://example.com+/image/image_MBqI_7XeVb.png">
+<meta property="og:image" content="http://example.com+/image/image_cqyL1cLLho.png">
+<meta property="og:image" content="http://example.com+/image/image_pvn2dUoYBt.png">
+<meta property="og:image" content="http://example.com+/image/image_wm-YhkWutR.png">
+<meta property="og:image" content="http://example.com+/image/image_SDArT7QDXy.png">
+<meta property="og:image" content="http://example.com+/image/image_lnDzU7Rr9P.png">
+<meta property="og:image" content="http://example.com+/image/image_GMq415WOxY.png">
+<meta property="og:image" content="http://example.com+/image/image_0Id3sgW_zN.png">
+<meta property="og:image" content="http://example.com+/image/image_ql-fZdcQ0F.png">
+<meta property="article:published_time" content="2022-10-06T03:09:53.000Z">
+<meta property="article:modified_time" content="2022-10-24T09:16:35.386Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com+/image/image_NBWHBI_fEf.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -146,473 +279,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-C-" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-MySQL进阶篇" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/08/C-/">C#笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/08/C-/" class="archive-article-date">
-  	<time datetime="2022-10-08T03:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此为unity-C#学习笔记</p>
-        
-          <a class="article-more-a" href="/2022/10/08/C-/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/08/C-/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Pr笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/08/Pr%E7%AC%94%E8%AE%B0/">pr基本操作</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/08/Pr%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2022-10-08T03:02:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>pr纯文字描述笔记</p>
-        
-          <a class="article-more-a" href="/2022/10/08/Pr%E7%AC%94%E8%AE%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/08/Pr%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-AE笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/06/AE%E7%AC%94%E8%AE%B0/">AE基本操作</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/06/AE%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2022-10-06T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习AE的笔记</p>
-        
-          <a class="article-more-a" href="/2022/10/06/AE%E7%AC%94%E8%AE%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/06/AE%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL基础篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/06/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87/">MySQL基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/06/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87/" class="archive-article-date">
-  	<time datetime="2022-10-06T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>主要了解MySQL的基础操作</p>
-        
-          <a class="article-more-a" href="/2022/10/06/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/06/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C++核心编程(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/06/C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B(1)/">C++核心编程</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/06/C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B(1)/" class="archive-article-date">
-  	<time datetime="2022-10-06T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本阶段主要针对C++面向对象编程技术做详细讲解，探讨C++中的核心和精髓。</p>
-        
-          <a class="article-more-a" href="/2022/10/06/C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B(1)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/06/C++%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B(1)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C++提高编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/06/C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/">C++提高编程</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/06/C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-10-06T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>本阶段主要针对C++泛型编程和STL技术做详细讲解，探讨C++更深层的使用</li>
-</ul>
-        
-          <a class="article-more-a" href="/2022/10/06/C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/06/C++%E6%8F%90%E9%AB%98%E7%BC%96%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2022-10-06T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习计算机操作系统的笔记</p>
-        
-          <a class="article-more-a" href="/2022/10/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL进阶篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/06/MySQL%E8%BF%9B%E9%98%B6%E7%AF%87/">MySQL基础篇</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL基础篇
     </h1>
   
 
@@ -1951,6 +1625,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -1958,16 +1653,79 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/06/MySQL%E8%BF%9B%E9%98%B6%E7%AF%87/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com+/2022/10/06/MySQL%E8%BF%9B%E9%98%B6%E7%AF%87/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/10/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          计算机操作系统
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1982,13 +1740,32 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">进阶篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">2.</span> <span class="toc-text">存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">MySQL体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">2.3.</span> <span class="toc-text">特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#innoDB"><span class="toc-number">2.3.1.</span> <span class="toc-text">innoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.2.</span> <span class="toc-text">逻辑存储结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM"><span class="toc-number">2.3.3.</span> <span class="toc-text">MyISAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory"><span class="toc-number">2.3.4.</span> <span class="toc-text">Memory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.3.5.</span> <span class="toc-text">三个存储引擎的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9"><span class="toc-number">2.4.</span> <span class="toc-text">选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.5.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">3.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%A6%82%E8%BF%B0"><span class="toc-number">3.1.</span> <span class="toc-text">索引概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.1.1.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84-amp-x20"><span class="toc-number">3.2.</span> <span class="toc-text">索引结构&amp;#x20;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.1.</span> <span class="toc-text">mysql支持的索引结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Tree"><span class="toc-number">3.2.2.</span> <span class="toc-text">B+Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#B-Tree-1"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">B-Tree</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8B-%E6%A0%91%E8%80%8C%E4%B8%8D%E6%98%AF%E7%94%A8B%E6%A0%91"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">为什么使用B+树而不是用B树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hash%E7%B4%A2%E5%BC%95"><span class="toc-number">3.2.3.</span> <span class="toc-text">Hash索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E9%80%89%E6%8B%A9%E4%BD%BF%E7%94%A8B-tree%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.4.</span> <span class="toc-text">思考：为什么InnoDB存储引擎选择使用B+tree索引结构?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E7%B1%BB"><span class="toc-number">3.3.</span> <span class="toc-text">索引分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E6%8F%8F%E8%BF%B0"><span class="toc-number">3.3.0.1.</span> <span class="toc-text">图片描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">3.3.0.2.</span> <span class="toc-text">思考题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E8%AF%AD%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">索引语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">3.5.</span> <span class="toc-text">SQL性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E6%89%A7%E8%A1%8C%E9%A2%91%E7%8E%87"><span class="toc-number">3.5.1.</span> <span class="toc-text">SQL执行频率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97"><span class="toc-number">3.5.2.</span> <span class="toc-text">慢查询日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#profile%E8%AF%A6%E6%83%85"><span class="toc-number">3.5.3.</span> <span class="toc-text">profile详情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#explain%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92"><span class="toc-number">3.5.4.</span> <span class="toc-text">explain执行计划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-id"><span class="toc-number">3.5.4.1.</span> <span class="toc-text">1.id</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-select-type"><span class="toc-number">3.5.4.2.</span> <span class="toc-text">2.select_type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type"><span class="toc-number">3.5.4.3.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#possible-key"><span class="toc-number">3.5.4.4.</span> <span class="toc-text">possible_key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Key"><span class="toc-number">3.5.4.5.</span> <span class="toc-text">Key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Key-len"><span class="toc-number">3.5.4.6.</span> <span class="toc-text">Key_len</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#row"><span class="toc-number">3.5.4.7.</span> <span class="toc-text">row</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#filtered"><span class="toc-number">3.5.4.8.</span> <span class="toc-text">filtered</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8"><span class="toc-number">3.6.</span> <span class="toc-text">索引使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E7%B4%A2%E5%BC%95%E6%95%88%E7%8E%87"><span class="toc-number">3.6.1.</span> <span class="toc-text">验证索引效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80%E6%B3%95%E5%88%99"><span class="toc-number">3.6.2.</span> <span class="toc-text">最左前缀法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">3.6.3.</span> <span class="toc-text">索引失效的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.6.4.</span> <span class="toc-text">范围查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#or%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-number">3.6.4.1.</span> <span class="toc-text">or连接的条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%BD%B1%E5%93%8D"><span class="toc-number">3.6.4.2.</span> <span class="toc-text">数据分布影响</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E5%90%84%E7%A7%8D%E5%8E%9F%E5%9B%A0"><span class="toc-number">3.6.4.3.</span> <span class="toc-text">索引失效的各种原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BB%A5%E4%B8%8B%E4%BD%BF%E7%94%A8%E4%BC%9A%E4%BD%BF%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%EF%BC%8C%E5%BA%94%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8%EF%BC%9B"><span class="toc-number">3.6.4.4.</span> <span class="toc-text">4. 以下使用会使索引失效，应避免使用；</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E6%8F%90%E7%A4%BA"><span class="toc-number">3.6.5.</span> <span class="toc-text">SQL提示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mysql%E7%B4%A2%E5%BC%95%E9%80%89%E6%8B%A9%EF%BC%88%E6%89%80%E4%BB%A5%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96%E9%80%89%E6%8B%A9%E7%9A%84%E7%B4%A2%E5%BC%95%EF%BC%89"><span class="toc-number">3.6.5.1.</span> <span class="toc-text">mysql索引选择（所以需要优化选择的索引）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="toc-number">3.6.6.</span> <span class="toc-text">覆盖索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-number">3.6.6.1.</span> <span class="toc-text">思考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95"><span class="toc-number">3.6.7.</span> <span class="toc-text">前缀索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B"><span class="toc-number">3.6.7.1.</span> <span class="toc-text">前缀索引查询流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%88%97-amp-%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95"><span class="toc-number">3.6.8.</span> <span class="toc-text">单列&amp;联合索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">3.7.</span> <span class="toc-text">索引设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">3.8.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">SQL优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">4.1.</span> <span class="toc-text">插入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E4%BC%98%E5%8C%96"><span class="toc-number">4.2.</span> <span class="toc-text">主键优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#order-by%E4%BC%98%E5%8C%96"><span class="toc-number">4.3.</span> <span class="toc-text">order by优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#group-by%E4%BC%98%E5%8C%96"><span class="toc-number">4.4.</span> <span class="toc-text">group by优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#limit-%E4%BC%98%E5%8C%96"><span class="toc-number">4.5.</span> <span class="toc-text">limit 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#count%E4%BC%98%E5%8C%96"><span class="toc-number">4.6.</span> <span class="toc-text">count优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#update%E4%BC%98%E5%8C%96"><span class="toc-number">4.7.</span> <span class="toc-text">update优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">4.8.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE-x2F-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B-x2F-%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">视图&#x2F;存储过程&#x2F;触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">5.1.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">5.1.1.</span> <span class="toc-text">介绍以及基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E6%A3%80%E6%9F%A5%E9%80%89%E9%A1%B9"><span class="toc-number">5.1.2.</span> <span class="toc-text">视图的检查选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="toc-number">5.1.3.</span> <span class="toc-text">视图的更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">5.1.4.</span> <span class="toc-text">视图的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">5.2.</span> <span class="toc-text">存储过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="toc-number">5.2.1.</span> <span class="toc-text">基本介绍与特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">5.2.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-number">5.2.3.</span> <span class="toc-text">语法结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.3.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.3.2.</span> <span class="toc-text">系统变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.3.3.</span> <span class="toc-text">用户定义变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.3.4.</span> <span class="toc-text">局部变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if%E5%88%A4%E6%96%AD"><span class="toc-number">5.2.4.</span> <span class="toc-text">if判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">5.2.5.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case"><span class="toc-number">5.2.6.</span> <span class="toc-text">case</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">5.2.7.</span> <span class="toc-text">循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while"><span class="toc-number">5.2.7.1.</span> <span class="toc-text">while</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#repeat"><span class="toc-number">5.2.7.2.</span> <span class="toc-text">repeat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loop"><span class="toc-number">5.2.7.3.</span> <span class="toc-text">loop</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%A0%87"><span class="toc-number">5.2.8.</span> <span class="toc-text">游标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.2.9.</span> <span class="toc-text">条件处理程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%87%BD%E6%95%B0"><span class="toc-number">5.3.</span> <span class="toc-text">存储函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">5.4.</span> <span class="toc-text">触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.4.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%AF%AD%E6%B3%95"><span class="toc-number">5.4.2.</span> <span class="toc-text">相关语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">5.4.3.</span> <span class="toc-text">案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-number">5.5.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%81"><span class="toc-number">6.</span> <span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">6.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%94%81"><span class="toc-number">6.2.</span> <span class="toc-text">全局锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%BA%A7%E9%94%81"><span class="toc-number">6.3.</span> <span class="toc-text">表级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E9%94%81"><span class="toc-number">6.3.1.</span> <span class="toc-text">表锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E9%94%81-meta-data-lock-MDL"><span class="toc-number">6.3.2.</span> <span class="toc-text">元数据锁(meta data lock, MDL )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-number">6.3.3.</span> <span class="toc-text">意向锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81"><span class="toc-number">6.4.</span> <span class="toc-text">行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E9%94%81-%EF%BC%88Record-Lock%EF%BC%89"><span class="toc-number">6.4.1.</span> <span class="toc-text">行锁 （Record Lock）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81-%EF%BC%88Gap-Lock%EF%BC%89-amp-%E4%B8%B4%E9%94%AE%E9%94%81-%EF%BC%88Next-Key-Lock%EF%BC%89"><span class="toc-number">6.4.2.</span> <span class="toc-text">间隙锁 **（Gap Lock）**&amp;  临键锁**（Next-Key Lock）**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E9%94%81%E5%8E%9F%E5%88%99"><span class="toc-number">6.4.3.</span> <span class="toc-text">加锁原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%8B%E8%AF%95"><span class="toc-number">6.4.4.</span> <span class="toc-text">数据测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE"><span class="toc-number">6.4.4.1.</span> <span class="toc-text">主键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E5%AD%98%E5%9C%A8%E6%97%B6"><span class="toc-number">6.4.4.2.</span> <span class="toc-text">主键存在时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E4%B8%8D%E5%AD%98%E5%9C%A8%E6%97%B6"><span class="toc-number">6.4.4.3.</span> <span class="toc-text">主键不存在时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95"><span class="toc-number">6.4.4.4.</span> <span class="toc-text">普通索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%E5%AD%98%E5%9C%A8%E6%97%B6"><span class="toc-number">6.4.4.5.</span> <span class="toc-text">普通索引存在时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%E4%B8%8D%E5%AD%98%E5%9C%A8%E6%97%B6"><span class="toc-number">6.4.4.6.</span> <span class="toc-text">普通索引不存在时</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-4"><span class="toc-number">6.4.5.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-5"><span class="toc-number">6.5.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#innoDB%E5%BC%95%E6%93%8E"><span class="toc-number">7.</span> <span class="toc-text">innoDB引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-1"><span class="toc-number">7.1.</span> <span class="toc-text">逻辑存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">7.2.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%8E%9F%E7%90%86"><span class="toc-number">7.3.</span> <span class="toc-text">事务原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redo-log-%E6%8C%81%E4%B9%85%E6%80%A7"><span class="toc-number">7.4.</span> <span class="toc-text">redo log(持久性)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undo-log-%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">7.5.</span> <span class="toc-text">undo log(原子性)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVCC-%E5%A4%9A%E7%89%88%E6%9C%AC%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-number">7.6.</span> <span class="toc-text">MVCC (多版本并发控制)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">7.6.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">7.6.2.</span> <span class="toc-text">实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E5%AD%97%E6%AE%B5"><span class="toc-number">7.6.2.1.</span> <span class="toc-text">隐藏字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undo-log%E6%97%A5%E5%BF%97"><span class="toc-number">7.6.2.2.</span> <span class="toc-text">undo log日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#readview"><span class="toc-number">7.6.2.3.</span> <span class="toc-text">readview</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99"><span class="toc-number">7.6.2.4.</span> <span class="toc-text">版本链数据访问规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RC%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E4%B8%8B"><span class="toc-number">7.6.2.5.</span> <span class="toc-text">RC隔离级别下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RR%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E4%B8%8B"><span class="toc-number">7.6.2.6.</span> <span class="toc-text">RR隔离级别下</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-6"><span class="toc-number">7.7.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">MySQL管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">8.1.</span> <span class="toc-text">系统数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">8.2.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-7"><span class="toc-number">8.2.0.1.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
 
 
+  
+  
+  
 
   
+
+  
+
   
 
 
@@ -2011,8 +1788,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
