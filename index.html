@@ -148,559 +148,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>“每一个模式描述了一个在我们周围不断重复发生的问题以及该问题的解决方案的核心。这样，你就能一次又一次地使用该方案而不必做重复劳动”</p>
-<ol>
-<li><strong>深入理解面向对象</strong><ul>
-<li>向下：深入理解三大面向对象机制<ul>
-<li>封装，隐藏内部实现</li>
-<li>继承，复用现有代码</li>
-<li>多态，改写对象行为</li>
-</ul>
-</li>
-<li>向上：深刻把握面向对象机制所带来的抽象意义，理解如何使用这些机制来表达现实世界，掌握什么是“好的面向对象设计”</li>
-</ul>
-</li>
-<li><strong>软件设计复杂的根本原因：变化</strong></li>
-<li><strong>如何解决复杂性</strong><ol>
-<li><p>分解</p>
-<p>分而治之</p>
-</li>
-<li><p>抽象</p>
-<p>更高层次来讲，人们处理复杂性有一个通用的技术，即抽象。由于不能掌握全部的复杂对象，我们选择<strong>忽视它的非本质细节</strong>而去处理<strong>泛化和理想化了的对象模型</strong>。</p>
-</li>
-</ol>
-</li>
-</ol>
-<h1 id="面向对象设计原则"><a href="#面向对象设计原则" class="headerlink" title="面向对象设计原则"></a>面向对象设计原则</h1><ol>
-<li><p><strong>面向对象设计，为什么？</strong></p>
-<p>变化是复用的天敌!</p>
-<p>面向对象设计最大的优势在于:</p>
-<p>抵御变化!</p>
-</li>
-<li><p><strong>重新认识面向对象</strong></p>
-<ol>
-<li>隔离变化</li>
-<li>各司其职</li>
-</ol>
-</li>
-<li><p><strong>对象是什么？</strong></p>
-<p>从语言实现层面来看，对象封装了代码和数据。</p>
-<p>从规格层面讲，对象是一系列可被使用的公共接口。</p>
-<p>从概念层面讲，对象是某种拥有责任的抽象。</p>
-</li>
-<li><p><strong>设计原则</strong></p>
-<ol>
-<li><p><strong>依赖倒置原则（DIP）</strong></p>
-<p>高层模块(稳定)不应该依赖于低层模块(变化)，二者都应该依赖于抽象(稳定)</p>
-<p>抽象(稳定)不应该依赖于实现细节(变化)，实现细节应该依赖于抽象(稳定)。</p>
-</li>
-<li><p><strong>开放封闭原则（OCP）</strong></p>
-<p>对扩展开放，对更改封闭。</p>
-<p>类模块应该是可扩展的，但是不可修改。</p>
-</li>
-<li><p><strong>单一职责原则(SRP)</strong></p>
-<p>一个类应该仅有一个引起它变化的原因。</p>
-<p>变化的方向隐含着类的责任。</p>
-</li>
-<li><p><strong>Liskov 替换原则(LSP)</strong></p>
-<p>子类必须能够替换它们的基类(IS-A)。</p>
-<p>继承表达类型抽象。</p>
-</li>
-<li><p><strong>接口隔离原则(ISP)</strong></p>
-<p>不应该强迫客户程序依赖它们不用的方法。<br>接口应该小而完备。</p>
-</li>
-<li><p><strong>优先使用对象组合，而不是类继承</strong></p>
-<p>类继承通常为“白箱复用”，对象组合通常为“黑箱复用”</p>
-<p>继承在某种程度上破坏封装性，子类父类耦合度高</p>
-<p>对象组合只要求被组合的对象具有良好的定义的接口，耦合度低</p>
-</li>
-<li><p><strong>封装变化点</strong></p>
-</li>
-<li><p><strong>争对接口编程，而不是针对实现编程</strong></p>
-<p>不将变量类型声明为某个特定的具体类，而是声明为某个接口，客户程序无需获知对象的具体类型，只需要知道对象所具有的接口。</p>
-<p>减少系统中各部分的依赖关系，从而实现“高内聚、松耦合”的类型设计方案。</p>
-</li>
-</ol>
-</li>
-</ol>
-<h1 id="重构关键技法"><a href="#重构关键技法" class="headerlink" title="重构关键技法"></a>重构关键技法</h1><ul>
-<li>静态 → 动态</li>
-<li>早绑定→晚绑定</li>
-<li>继承→组合</li>
-<li>编译时依赖→运行时依赖</li>
-<li>紧耦合→松耦合</li>
-</ul>
-<h1 id="设计模式-1"><a href="#设计模式-1" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h4 id="设计模式类型"><a href="#设计模式类型" class="headerlink" title="设计模式类型"></a>设计模式类型</h4><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>模式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/toaN7BgXYvGMrrJK8XaCGN" title="组件协作">组件协作</a></td>
-<td>Template、MethodStrategy、Observer&#x2F;Event</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/3Yc871DXZYUxgsg3YTEKc2" title="对象创建">对象创建</a></td>
-<td>Factory Method、Abstract Factory、Prototype、Builder</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/8UtQSUwhTCi89FnqWLDsVh" title="单一职责">单一职责</a></td>
-<td>Decorator、Bridge</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/mDMxryhfrDiZJUaDubKNL6" title="对象性能">对象性能</a></td>
-<td>Singleton、Flyweight</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/prAGagUEAxgFbpL1NemdNo" title="接口隔离">接口隔离</a></td>
-<td>Fagade、Proxy、Mediator、Adapter</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/bb2HMDdRTLgtaq7biUkwhM" title="状态变化">状态变化</a></td>
-<td>Memento、State</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/8z2gX3oSftZd777kctGLa8" title="数据结构">数据结构</a></td>
-<td>Composite、Iterator、Chain of Resposibility</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/4rpvru1Qp4tMrfbBL2C2nu" title="行为变化">行为变化</a></td>
-<td>Command、Visitor</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.wolai.com/eVJQSJy2r5k8CThxQEMy86" title="领域问题">领域问题</a></td>
-<td>Interpreter</td>
-</tr>
-</tbody></table>
-<h2 id="组件协作"><a href="#组件协作" class="headerlink" title="组件协作"></a>组件协作</h2><h3 id="模板方法（Template-Method）"><a href="#模板方法（Template-Method）" class="headerlink" title="模板方法（Template Method）"></a>模板方法（Template Method）</h3><ul>
-<li><p><strong>概念</strong></p>
-<p>Template Method模式是一种非常基础性的设计模式，在面向对象系统中有着大量的应用。</p>
-<p>它用最简洁的机制(虚函数的多态性为很多应用程序框架提供了灵活的扩展点，是代码复用方面的基本实现结构。</p>
-<p>定义一个操作中的算法的骨架(稳定)，而将一些步骤延迟(变化)到子类中。Template Method使得子类可以不改变（复用）一个算法的结构即可重定义(override 重写)该算法的某些特定步骤。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95.drawio_lkUmI7AVib.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<ul>
-<li><strong>Library开发</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Library</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">step1</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">step3</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">step5</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">step1</span>();</span><br><span class="line">        <span class="built_in">step2</span>();    <span class="comment">//非稳定，晚绑定</span></span><br><span class="line">        <span class="built_in">step3</span>();</span><br><span class="line">        <span class="built_in">step4</span>();    <span class="comment">//非稳定，晚绑定</span></span><br><span class="line">        <span class="built_in">step5</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Library</span>()&#123;&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li><strong>Application开发</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Application</span>:<span class="keyword">public</span> Library</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">/* data */</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Library* app = <span class="keyword">new</span> Application;</span><br><span class="line">    app-&gt;<span class="built_in">run</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h3 id="策略模式（Strategy）"><a href="#策略模式（Strategy）" class="headerlink" title="策略模式（Strategy）"></a>策略模式（Strategy）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件构建过程中，某些对象使用的算法可能多种多样，经常改变，如果将这些算法都编码到对象中，将会使对象变得异常复杂而且有时候支持不使用的算法也是一个性能负担。</p>
-<p>如何在运行时根据需要透明地更改对象的算法?将算法与对象本身解耦，从而避免上述问题 ?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>定义一系列算法，把它们一个个封装起来，并且使它们可互相替换(变化)。该模式使得算法可独立于使用它的客户程序(稳定)而变化(扩展，子类化)。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.drawio_D-JFGw4E0m.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 11. 策略模式</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TaxStrategy</span>&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">double</span> <span class="title">Calculate</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">TaxStrategy</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CMTax</span>:<span class="keyword">public</span> TaxStrategy&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">double</span> <span class="title">Calculate</span><span class="params">()</span><span class="keyword">override</span></span>&#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">USax</span>:<span class="keyword">public</span> TaxStrategy&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">double</span> <span class="title">Calculate</span><span class="params">()</span><span class="keyword">override</span></span>&#123;<span class="keyword">return</span> <span class="number">1</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DETax</span>:<span class="keyword">public</span> TaxStrategy&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">double</span> <span class="title">Calculate</span><span class="params">()</span><span class="keyword">override</span></span>&#123;<span class="keyword">return</span> <span class="number">2</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SalesOrder</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    TaxStrategy* tax;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">SalesOrder</span>(TaxStrategy* tax):<span class="built_in">tax</span>(tax)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">calculate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> tax-&gt;<span class="built_in">Calculate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">SalesOrder <span class="title">saleOrder</span><span class="params">(<span class="keyword">new</span> CMTax)</span></span>;</span><br><span class="line">    saleOrder.<span class="built_in">calculate</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>要点总结</strong></p>
-<p>Strategy及其子类为组件提供了一系列可重用的算法，从而可以使得类型在运行时方便地根据需要在各个算法之间进行切换。</p>
-<p>Strategy模式提供了用条件判断语句以外的另一种选择，消除条件判断语句，就是在解耦合。含有许多条件判断语句的代码通常都需要Strategy模式。</p>
-<p>如果Strategy对象没有实例变量，那么各个上下文可以共享同一个Strategy对象，从而节省对象开销。</p>
-</li>
-</ul>
-<h3 id="观察者模式（Observer-x2F-Event）"><a href="#观察者模式（Observer-x2F-Event）" class="headerlink" title="观察者模式（Observer&#x2F;Event）"></a>观察者模式（Observer&#x2F;Event）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件构建过程中，我们需要为某些对象建立一种“通知依赖关系”—一个对象(目标对象)的状态发生改变，所有的依赖对象（观察者对象）都将得到通知。如果这样的依赖关系过于紧密，将使软件不能很好的抵御变化。</p>
-<p>使用面向对象技术，可以将这种依赖关系弱化，并形成一种稳定的依赖关系。从而实现软件体系结构的松耦合。</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>定义对象间的一种一对多(变化)的依赖关系，以便当一个对象(Subject)的状态发生改变时，所有依赖于它的对象都得到通知并自动更新。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_zEOP0AQHLV.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<h4 id="第一种-支持单通知"><a href="#第一种-支持单通知" class="headerlink" title="第一种(支持单通知)"></a>第一种(支持单通知)</h4><ul>
-<li><strong>接口类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">IProgress</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">setValue</span><span class="params">(<span class="type">float</span> value)</span> </span>= <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>主逻辑(变化)</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainForm</span>:<span class="keyword">public</span> Form,<span class="keyword">public</span> IProgress&#123;</span><br><span class="line">    ProgressBar* progressBar;<span class="comment">//进度条组件</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Button_Click</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="function">FileSplitter <span class="title">spliter</span><span class="params">(filePath,fileSize,<span class="keyword">this</span>)</span></span>;</span><br><span class="line">        spliter.<span class="built_in">split</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">setValue</span><span class="params">(<span class="type">float</span> value)</span></span>&#123;</span><br><span class="line">      progressBar-&gt;<span class="built_in">setProgressValue</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>处理逻辑（稳定）</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FileSplitter</span></span><br><span class="line">&#123;</span><br><span class="line">  string m_filePath;</span><br><span class="line">  <span class="type">int</span> m_fileSize;</span><br><span class="line">  <span class="comment">// Progress* pro; //具体通知控件</span></span><br><span class="line">  IProgress* i_pro; <span class="comment">//抽象通知机制，只支持一个</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">FileSplitter</span>(</span><br><span class="line">    string filePath,</span><br><span class="line">    <span class="type">int</span> fileSize,</span><br><span class="line">    IProgress pro</span><br><span class="line">  ):</span><br><span class="line">  <span class="built_in">m_filePath</span>(filePath),</span><br><span class="line">  <span class="built_in">m_fileSize</span>(fileSize),</span><br><span class="line">  <span class="built_in">i_pro</span>(pro)</span><br><span class="line">  &#123;&#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">split</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; m_fileSize; i++)&#123;</span><br><span class="line">          <span class="type">float</span> progressValue = m_fileSize;</span><br><span class="line">          progressValue = (i+<span class="number">1</span>) / progressValue;</span><br><span class="line">          <span class="built_in">onProgress</span>(progressValue);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">   <span class="function"><span class="type">void</span> <span class="title">onProgress</span><span class="params">(<span class="type">float</span> value)</span></span>&#123;</span><br><span class="line">      <span class="comment">// 通知单个控件</span></span><br><span class="line">      <span class="keyword">if</span>(i_pro != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">          i_pro-&gt;<span class="built_in">setValue</span>(value);<span class="comment">//传递消息</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="第二种-支持多通知"><a href="#第二种-支持多通知" class="headerlink" title="第二种(支持多通知)"></a>第二种(支持多通知)</h4><ul>
-<li><strong>接口类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">IProgress</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">setValue</span><span class="params">(<span class="type">float</span> value)</span> </span>= <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>主逻辑(变化)</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainForm</span>:<span class="keyword">public</span> Form,<span class="keyword">public</span> IProgress&#123;</span><br><span class="line">    ProgressBar* progressBar;<span class="comment">//进度条组件</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Button_Click</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ConsoleNotifier cn;</span><br><span class="line">        <span class="function">FileSplitter <span class="title">spliter</span><span class="params">(filePath,fileSize)</span></span>;</span><br><span class="line">        spliter.<span class="built_in">addIProgress</span>(<span class="keyword">this</span>);</span><br><span class="line">        spliter.<span class="built_in">addIProgress</span>(&amp;cn);</span><br><span class="line">        spliter.<span class="built_in">split</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">setValue</span><span class="params">(<span class="type">float</span> value)</span></span>&#123;</span><br><span class="line">      progressBar-&gt;<span class="built_in">setProgressValue</span>(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConsoleNotifier</span>:<span class="keyword">public</span> IProgress&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">setValue</span><span class="params">(<span class="type">float</span> value)</span></span>&#123;</span><br><span class="line">      cout&lt;&lt;<span class="string">&quot;.&quot;</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><strong>处理逻辑（稳定）</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FileSplitter</span></span><br><span class="line">&#123;</span><br><span class="line">  string m_filePath;</span><br><span class="line">  <span class="type">int</span> m_fileSize;</span><br><span class="line">  <span class="comment">// Progress* pro; //具体通知控件</span></span><br><span class="line">  vector&lt;IProgress*&gt; i_pro_vec;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">FileSplitter</span>(</span><br><span class="line">    string filePath,</span><br><span class="line">    <span class="type">int</span> fileSize,</span><br><span class="line">  ):</span><br><span class="line">  <span class="built_in">m_filePath</span>(filePath),</span><br><span class="line">  <span class="built_in">m_fileSize</span>(fileSize),</span><br><span class="line">  &#123;&#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">addIProgress</span><span class="params">(IProgress*pro)</span></span>&#123;</span><br><span class="line">      i_pro_vec.<span class="built_in">push_back</span>(pro);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">removeIProgress</span><span class="params">(IProgress*pro)</span></span>&#123;</span><br><span class="line">      i_pro_vec.<span class="built_in">remove</span>(pro);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">split</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; m_fileSize; i++)&#123;</span><br><span class="line">          <span class="type">float</span> progressValue = m_fileSize;</span><br><span class="line">          progressValue = (i+<span class="number">1</span>) / progressValue;</span><br><span class="line">          <span class="built_in">onProgress</span>(progressValue);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">   <span class="function"><span class="type">void</span> <span class="title">onProgress</span><span class="params">(<span class="type">float</span> value)</span></span>&#123;</span><br><span class="line">      <span class="comment">// 通知多个控件</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">auto</span> i_pro :i_pro_vec)&#123;</span><br><span class="line">          i_pro-&gt;<span class="built_in">setValue</span>(value);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>使用面向对象的抽象，Observer模式使得我们可以独立地改变目标与观察者，从而使二者之间的依赖关系达致松耦合，目标发送通知时，无需指定观察者，通知(可以携带通知信息作为参数)会自动传播。</p>
-<p>观察者自己决定是否需要订阅通知，目标对象对此一无所知，Observer模式是基于事件的UI框架中非常常用的设计模式，也是MVC模式的一个重要组成部分。</p>
-</li>
-</ul>
-<h2 id="单一职责"><a href="#单一职责" class="headerlink" title="单一职责"></a>单一职责</h2><h3 id="装饰模式（Decorator）"><a href="#装饰模式（Decorator）" class="headerlink" title="装饰模式（Decorator）"></a>装饰模式（Decorator）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在某些情况下我们可能会“过度地使用继承来扩展对象的功能”，由于继承为类型引入的静态特质，使得这种扩展方式缺乏灵活性;并且随着子类的增多(扩展功能的增多)，各种子类的组合(扩展功能的组合)会导致更多子类的膨胀。</p>
-<p>如何使“对象功能的扩展”能够根据需要来动态地实现?同时避免“扩展功能的增多”带来的子类膨胀问题?从而使得任何“功能扩展变化”所导致的影响将为最低?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>动态(组合)地给一个对象增加一些额外的职责。就增加功能而言，Decorator模式比生成子类(继承)更为灵活(消除重复代码 &amp;减少子类个数)。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_q2KLam1tWx.png"></p>
-</li>
-<li><p><strong>代码示例</strong></p>
-<ul>
-<li><p><strong>改善前</strong></p>
-<p><img src="/image/image_4COOpnPJnt.png"></p>
-</li>
-<li><p><strong>改善后</strong></p>
-<p><img src="/image/image_OzKwzQq5Sa.png"></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Stream</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">char</span> <span class="title">read</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">write</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FileStream</span>:<span class="keyword">public</span> Stream&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">char</span> <span class="title">read</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">write</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkStream</span>:<span class="keyword">public</span> Stream&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">char</span> <span class="title">read</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">write</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MemoryStream</span>:<span class="keyword">public</span> Stream&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">char</span> <span class="title">read</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">write</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DecorateStream</span>:<span class="keyword">public</span> Stream&#123; <span class="comment">//此继承为了实现接口</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    Stream* stream; <span class="comment">//此组合为了引入继承了Stream的实例</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">DecorateStream</span>(Stream* stream):<span class="built_in">stream</span>(stream)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CryptoStream</span>:<span class="keyword">public</span> DecorateStream&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">using</span> DecorateStream::DecorateStream;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">char</span> <span class="title">read</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="comment">// 加密....</span></span><br><span class="line">        stream-&gt;<span class="built_in">read</span>();</span><br><span class="line">        <span class="comment">// 加密...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">write</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="comment">// 加密....</span></span><br><span class="line">        stream-&gt;<span class="built_in">write</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BufferedStream</span>:<span class="keyword">public</span> DecorateStream&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">using</span> DecorateStream::DecorateStream;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">char</span> <span class="title">read</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="comment">// 加密....</span></span><br><span class="line">        stream-&gt;<span class="built_in">read</span>();</span><br><span class="line">        <span class="comment">// 加密...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">write</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="comment">// 加密....</span></span><br><span class="line">        stream-&gt;<span class="built_in">write</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    FileStream * fileStream = <span class="keyword">new</span> FileStream;</span><br><span class="line">    CryptoStream* cryptoStream = <span class="keyword">new</span> <span class="built_in">CryptoStream</span>(fileStream);</span><br><span class="line">    BufferedStream* bufferedStream = <span class="keyword">new</span> <span class="built_in">BufferedStream</span>(fileStream);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>通过采用组合而非继承的手法，Decorator模式实现了在运行时动态扩展对象功能的能力，而且可以根据需要扩展多个功能。避免了使用继承带来的“灵活性差”和“多子类衍生问题”</p>
-<p>Decorator类在接口上表现为is-a Component的继承关系，即Decorator类继承了Component类所具有的接口。但在实现上又表现为has-a Component的组合关系，即Decorator类又使用了另外一个Component类。</p>
-<p>Decorator模式的目的并非解决“多子类衍生的多继承”问题，Decorator模式应用的要点在于解决“主体类在多个方向上的扩展功能”——是为“装饰”的含义。</p>
-</li>
-</ul>
-<h3 id="桥模式（Bridge）"><a href="#桥模式（Bridge）" class="headerlink" title="桥模式（Bridge）"></a>桥模式（Bridge）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>由于某些类型的固有的实现逻辑，使得它们具有两个变化的维度乃至多个纬度的变化。</p>
-<p>如何应对这种“多维度的变化”?如何利用面向对象技术来使得类型可以轻松地沿着两个乃至多个方向变化，而不引入额外的复杂度?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>将抽象部分(业务功能)与实现部分(平台实现)分离，使它们都可以独立地变化。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_piFFSKQz7a.png"></p>
-</li>
-<li><p><strong>代码示例</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MessagerImp</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Login</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">SendMessage</span><span class="params">()</span> </span>= <span class="number">0</span>;    </span><br><span class="line">&#125;; </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MessagerLite</span>:<span class="keyword">public</span> MessagerImp&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Login</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">SendMessage</span><span class="params">()</span></span>&#123;&#125;  </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MessagerPerfect</span>:<span class="keyword">public</span> MessagerImp&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Login</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">SendMessage</span><span class="params">()</span></span>&#123;&#125;  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Messager</span>&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  MessagerImp* messagerImp; <span class="comment">//组合变化</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">Messager</span>(MessagerImp* messagerImp):</span><br><span class="line">      <span class="built_in">messagerImp</span>(messagerImp)&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">PlaySound</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">DrawShape</span><span class="params">()</span> </span>= <span class="number">0</span>;    </span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//继承变化</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PCMessager</span>:<span class="keyword">public</span> Messager&#123;</span><br><span class="line">  <span class="keyword">using</span> Messager::Messager;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">PlaySound</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">DrawShape</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MobileMessager</span>:<span class="keyword">public</span> Messager&#123;</span><br><span class="line">  <span class="keyword">using</span> Messager::Messager;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">PlaySound</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">DrawShape</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  MessagerLite* ml = <span class="keyword">new</span> MessagerLite;</span><br><span class="line">  PCMessager* pc = <span class="keyword">new</span> <span class="built_in">PCMessager</span>(ml); </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>要点总结</p>
-<p>Bridge模式使用“对象间的组合关系”解耦了抽象和实现之间固有的绑定关系，使得抽象和实现可以沿着各自的维度来变化。所谓抽象和实现沿着各自纬度的变化，即“子类化”它们。</p>
-<p>Bridge模式有时候类似于多继承方案，但是多继承方案往往违背单一职责原则(即一个类只有一个变化的原因)，复用性比较差。</p>
-<p>Bridge模式是比多继承方案更好的解决方法。</p>
-<p>Bridge模式的应用一般在“两个非常强的变化维度”，有时一个类也有多于两个的变化维度，这时可以使用Bridge的扩展模式。</p>
-</li>
-</ul>
-<h2 id="对象创建"><a href="#对象创建" class="headerlink" title="对象创建"></a>对象创建</h2><ul>
-<li><p><strong>概念</strong></p>
-<p>通过“对象创建”模式绕开new，来避免对象创建(new)过程中所导致的紧耦合(依赖具体类)从而支持对象创建的稳定。它是接口抽象之后的第一步工作。</p>
-</li>
-</ul>
-<h3 id="工厂方法（Factory）"><a href="#工厂方法（Factory）" class="headerlink" title="工厂方法（Factory）"></a>工厂方法（Factory）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件系统中，经常面临着创建对象的工作;由于需求的变化，需要创建的对象的具体类型经常变化。</p>
-<p>如何应对这种变化?如何绕过常规的对象创建方法(new)，提供一种“封装机制”来避免客户程序和这种“具体对象创建工作”的紧耦合?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>定义一个用于创建对象的接口，让子类决定实例化哪一个类Factory Method使得一个类的实例化延迟(目的:解耦，手段:虚函数)到子类。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_gdC2x6L7tS.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<ul>
-<li><strong>被生产的类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象基类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ISplitter</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">ISplitter</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BinarySplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxtSplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><strong>工厂类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SplitterFactory</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">SplitterFactory</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BinarySplitterFactory</span>:<span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">BinarySplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxtSplitterFactory</span>:<span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TxtSplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>Factory Method模式用于隔离类对象的使用者和具体类型之间的耦合关系。面对一个经常变化的具体类型，紧耦合关系(new)会导致软件的脆弱。</p>
-<p>Factory Method模式通过面向对象的手法，将所要创建的具体对象工作延迟到子类，从而实现一种扩展(而非更改)的策略，较好地解决了这种紧耦合关系。</p>
-<p>Factory Method模式解决“单个对象”的需求变化。缺点在于要求创建方法&#x2F;参数相同。</p>
-</li>
-</ul>
-<h3 id="抽象工厂（Abstract-Factory）"><a href="#抽象工厂（Abstract-Factory）" class="headerlink" title="抽象工厂（Abstract Factory）"></a>抽象工厂（Abstract Factory）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件系统中，经常面临着“一系列相互依赖的对象”的创建工作;同时，由于需求的变化，往往存在更多系列对象的创建工作。</p>
-<p>如何应对这种变化?如何绕过常规的对象创建方法(new)，提供一种“封装机制”来避免客户程序和这种“多系列具体对象创建工作”的紧耦合?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>提供一个接口，让该接口负责创建一系列“相关或者相互依赖的对象”，无需指定它们具体的类。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_MWlpsCd06V.png"></p>
-</li>
-<li><p><strong>代码示例</strong></p>
-<h4 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h4><ul>
-<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据库连接的抽象类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBConnection</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBConnectionFactory</span>&#123;  <span class="comment">//工厂抽象基类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBCommand</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBCommandFactory</span>&#123;  <span class="comment">//工厂抽象基类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDataReader</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDataReaderFactory</span>&#123;  <span class="comment">//工厂抽象基类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><strong>具体类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支持SQL Server</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlConnectionFactory</span>:<span class="keyword">public</span> IDBConnectionFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlConnection;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlCommandFactory</span>:<span class="keyword">public</span> IDBCommandFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlCommand;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDataReaderFactory</span>:<span class="keyword">public</span> IDBConnectionFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlDataReader;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 支持Oracle(同上)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="抽象工厂改造（由于数据库对象的关联性）"><a href="#抽象工厂改造（由于数据库对象的关联性）" class="headerlink" title="抽象工厂改造（由于数据库对象的关联性）"></a>抽象工厂改造（由于数据库对象的关联性）</h4><ul>
-<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据库连接的抽象类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBConnection</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBCommand</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDataReader</span>&#123;&#125;;</span><br><span class="line"><span class="comment">// 融合</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBFactory</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><strong>具体类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支持SQL Server</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDBFactory</span>:<span class="keyword">public</span> IDBFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlConnection;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlCommand;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlDataReader;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 支持Oracle(同上)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>如果没有应对“多系列对象构建”的需求变化，则没有必要使用<br>Abstract Factory模式，这时候使用简单的工厂完全可以。</p>
-<p>“系列对象”指的是在某一特定系列下的对象之间有相互依赖、或作用的关系。不同系列的对象之间不能相互依赖。</p>
-<p>Abstract Factory模式主要在于应对“新系列”的需求变动。其缺点在于难以应对“新对象”的需求变动。</p>
-</li>
-</ul>
-<h3 id="原型模式（Prototype）"><a href="#原型模式（Prototype）" class="headerlink" title="原型模式（Prototype）"></a>原型模式（Prototype）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件系统中，经常面临着“某些结构复杂的对象”的创建工作;由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有比较稳定一致的接口。</p>
-<p>如何应对这种变化?如何向“客户程序(使用这些对象的程序)”<br>隔离出“这些易变对象”，从而使得“依赖这些易变对象的客户程序”不随着需求改变而改变?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>使用原型实例指定创建对象的种类，然后通过拷贝这些原型来创建新的对象。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_mouh3s2nX0.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<ul>
-<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象基类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ISplitter</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter*<span class="title">clone</span><span class="params">()</span> </span>= <span class="number">0</span>;<span class="comment">//通过克隆自己来创建对象</span></span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">ISplitter</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><strong>具体类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BinarySplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">clone</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">BinarySplitter</span>(*<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxtSplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">clone</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TxtSplitter</span>(*<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><strong>主类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainForm</span>&#123;</span><br><span class="line">    ISplitter* protoType;<span class="comment">//仅仅用于克隆</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MainForm</span>(ISplitter* protoType)&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;protoType = protoType;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">click_button</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ISplitter* splitter = </span><br><span class="line">              protoType-&gt;<span class="built_in">clone</span>();<span class="comment">//克隆，得到新对象</span></span><br><span class="line">        splitter-&gt;<span class="built_in">split</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>Prototype模式同样用于隔离类对象的使用者和具体类型(易变类)<br>之间的耦合关系，它同样要求这些“易变类”拥有“稳定的接口”</p>
-<p>Prototype模式对于“如何创建易变类的实体对象”采用“原型克隆”的方法来做，它使得我们可以非常灵活地动态创建“拥有某些稳定接口”的新对象——所需工作仅仅是注册一个新类的对象(即原型)然后在任何需要的地方Clone。</p>
-<p>Prototype模式中的Clone方法可以利用某些框架中的序列化来实现深拷贝。</p>
-</li>
-</ul>
-<h3 id="构建器（Builder）"><a href="#构建器（Builder）" class="headerlink" title="构建器（Builder）"></a>构建器（Builder）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件系统中，有时候面临着“一个复杂对象”的创建工作，其通常由各个部分的子对象用一定的算法构成;由于需求的变化，这个复杂对象的各个部分经常面临着剧烈的变化，但是将它们组合在一起的算法却相对稳定。</p>
-<p>如何应对这种变化?如何提供一种“封装机制”来隔离出“复杂对象的各个部分”的变化，从而保持系统中的“稳定构建算法”不随着需求改变而改变?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>将一个复杂对象的构建与其表示相分离，使得同样的构建过程(稳定)可以创建不同的表示(变化)。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_okFQlY-qdT.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<h4 id="简单的构造器"><a href="#简单的构造器" class="headerlink" title="简单的构造器"></a>简单的构造器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">House</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">step1</span>();</span><br><span class="line">        <span class="built_in">step2</span>();    <span class="comment">//非稳定，晚绑定</span></span><br><span class="line">        <span class="built_in">step3</span>();</span><br><span class="line">        <span class="built_in">step4</span>();    <span class="comment">//非稳定，晚绑定</span></span><br><span class="line">        <span class="built_in">step5</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">House</span>()&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StoneHouse</span>:<span class="keyword">public</span> House&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="复杂的构造器"><a href="#复杂的构造器" class="headerlink" title="复杂的构造器"></a>复杂的构造器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">House</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HouseBuild</span>&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    House* pHouse;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">House* <span class="title">GetResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pHouse;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">HouseBuild</span>()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StoneHouseBuild</span>:<span class="keyword">public</span> HouseBuild&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HouseDirector</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    HouseBuilder* pHouseBuilder;</span><br><span class="line">    <span class="built_in">HouseDirector</span>(HouseBuilder* pHouseBuilder)&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;pHouseBuilder = pHouseBuilder;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">House* <span class="title">Construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step1</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step2</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step3</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step4</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step5</span>();</span><br><span class="line">        <span class="keyword">return</span> pHouseBuilder-&gt;<span class="built_in">GetResult</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>要点总结</strong></p>
-<p>Builder 模式主要用于“分步骤构建一个复杂的对象”。在这其中“分步骤”是一个稳定的算法，而复杂对象的各个部分则经常变化。</p>
-<p>变化点在哪里，封装哪里——Builder模式主要在于应对“复杂对象各个部分”的频繁需求变动。其缺点在于难以应对“分步骤构建算法”的需求变动。</p>
-<p>在Builder模式中，要注意不同语言中构造器内调用虚函数的差别</p>
-</li>
-</ul>
-<h2 id="对象性能"><a href="#对象性能" class="headerlink" title="对象性能"></a>对象性能</h2><ul>
-<li><p><strong>概述</strong></p>
-<p>面向对象很好地解决了“抽象”的问题，但是必不可免地要付出一定的代价。对于通常情况来讲，面向对象的成本大都可以忽略不计。</p>
-<p>但是某些情况，面向对象所带来的成本必须谨慎处理。</p>
-</li>
-</ul>
-<h3 id="单件模式（Singleton）"><a href="#单件模式（Singleton）" class="headerlink" title="单件模式（Singleton）"></a>单件模式（Singleton）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件系统中，经常有这样一些特殊的类，必须保证它们在系统中只存在一个实例，才能确保它们的逻辑正确性、以及良好的效率。</p>
-<p>如何绕过常规的构造器，提供一种机制来保证一个类只有一个实例?</p>
-<p>这应该是类设计者的责任，而不是使用者的责任。</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>保证一个类仅有一个实例，并提供一个该实例的全局访问点。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_Z8rQ1ApND1.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">Singleton</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="built_in">Singleton</span>(<span class="type">const</span> Singleton&amp; other) = <span class="keyword">default</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="type">static</span> Singleton* m_instance;</span><br><span class="line">&#125;;</span><br><span class="line">Singleton* Singleton::m_instance=<span class="literal">nullptr</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><strong>线程非安全版本</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Singleton* <span class="title">Singleton::getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m_instance==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">        m_instance = <span class="keyword">new</span> <span class="built_in">Singleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> m_instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>线程安全版本，锁代价过高</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Singleton* <span class="title">Singleton::getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Lock lock;</span><br><span class="line">    <span class="keyword">if</span>(m_instance==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">        m_instance = <span class="keyword">new</span> <span class="built_in">Singleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> m_instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>双检查锁，但由于内存读写reorder不安全</strong></p>
-<p>如果m_instance采用volatile则安全</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Singleton* <span class="title">Singleton::getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m_instance==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">        Lock lock;</span><br><span class="line">        <span class="keyword">if</span>(m_instance==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">            m_instance = <span class="keyword">new</span> <span class="built_in">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> m_instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>C++ 11版本之后的跨平台实现</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">std::atomic&lt;Singleton*&gt; Singleton::m_instance;</span><br><span class="line">std::mutex Singleton::m_mutex;</span><br><span class="line"><span class="function">Singleton* <span class="title">Singleton::getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Singleton* tmp = m_instance.<span class="built_in">load</span>(std::memory_order_relaxed);</span><br><span class="line">    std::<span class="built_in">atomic_thread_fence</span>(std::memory_order_acquire);</span><br><span class="line">    <span class="keyword">if</span>(m_instance==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">        <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(m_mutex)</span></span>;</span><br><span class="line">        tmp = m_instance.<span class="built_in">load</span>(std::memory_order_relaxed);</span><br><span class="line">        <span class="keyword">if</span>(m_instance==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">            tmp = <span class="keyword">new</span> <span class="built_in">Singleton</span>();</span><br><span class="line">            std::<span class="built_in">atomic_thread_fence</span>(std::memory_order_release);</span><br><span class="line">            m_instance.<span class="built_in">store</span>(tmp,std::memory_order_relaxed);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> m_instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>Singleton模式中的实例构造器可以设置为protected以允许子类派Singleton模式一般不要支持拷贝构造函数和Clone接口，因为这有可能导致多个对象实例，与Singleton模式的初衷违背。</p>
-<p>如何实现多线程环境下安全的Singleton?注意对双检查锁的正确实现。</p>
-</li>
-</ul>
-<h3 id="享元模式（Flyweight）"><a href="#享元模式（Flyweight）" class="headerlink" title="享元模式（Flyweight）"></a>享元模式（Flyweight）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件系统采用纯粹对象方案的问题在于大量细粒度的对象会很快充斥在系统中，从而带来很高的运行时代价——主要指内存需求方面的代价。</p>
-<p>如何在避免大量细粒度对象问题的同时，让外部客户程序仍然能够透明地使用面向对象的方式来进行操作?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>运用共享技术有效地支持大量细粒度的对象。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_XtRE5HXs-z.png"></p>
-</li>
-<li><p><strong>代码实例</strong></p>
-<ul>
-<li><p><strong>字体类</strong></p>
-<p>如果每个字体都是对象，将导致很大的内存压力</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Font</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    string  key;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Font</span>(<span class="type">const</span> string&amp;key)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>字体工厂类</strong></p>
-<p>在工厂中，若生产过对应字体，则无需重新为相同字体分配内存，直接取出对应字体的指针。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FontFactory</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    map&lt;string,Font*&gt; FontPool;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Font* <span class="title">GetFont</span><span class="params">(<span class="type">const</span> string&amp;key)</span></span>&#123;</span><br><span class="line">        map&lt;string,Font*&gt;::iterator item = FontPool.<span class="built_in">find</span>(key);</span><br><span class="line">        <span class="keyword">if</span>(item!=FontPool.<span class="built_in">end</span>())&#123;</span><br><span class="line">            <span class="keyword">return</span> fontPool[key];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            Font* font = <span class="keyword">new</span> <span class="built_in">Font</span>(key);</span><br><span class="line">            fontPool[key] = font;</span><br><span class="line">            <span class="keyword">return</span> font;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>面向对象很好地解决了抽象性的问题，但是作为一个运行在机器中的程序实体，我们需要考虑对象的代价问题。Flyweight主要解决面向对象的代价问题，一般不触及面向对象的抽象性问题。</p>
-<p>Flyweight采用对象共享的做法来降低系统中对象的个数，从而降低细粒度对象给系统带来的内存压力。在具体实现方面，要注意对象状态的处理。</p>
-<p>对象的数量太大从而导致对象内存开销加大——什么样的数量才算大?这需要我们仔细的根据具体应用情况进行评估，而不能凭空 臆断。</p>
-</li>
-</ul>
-<h2 id="接口隔离"><a href="#接口隔离" class="headerlink" title="接口隔离"></a>接口隔离</h2><ul>
-<li><p><strong>概念</strong></p>
-<p>在组件构建过程中，某些接口之间直接的依赖常常会带来很多问题、甚至根本无法实现。采用添加一层间接(稳定)接口，来隔离本来互相紧密关联的接口是一种常见的解决方案。</p>
-</li>
-</ul>
-<h3 id="门面模式（Facade）"><a href="#门面模式（Facade）" class="headerlink" title="门面模式（Facade）"></a>门面模式（Facade）</h3><ul>
-<li><p><strong>设计总体</strong></p>
-<p><img src="/image/image_onRK1ikleF.png"></p>
-</li>
-<li><p><strong>动机</strong></p>
-<p>上述A方案的问题在于组件的客户和组件中各种复杂的子系统有了过多的耦合，随着外部客户程序和各子系统的演化，这种过多的耦合面临很多变化的挑战。</p>
-<p>如何简化外部客户程序和系统间的交互接口?如何将外部客户程序的演化和内部子系统的变化之间的依赖相互解耦?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>为子系统中的一组接口提供一个一致(稳定)的界面Façade模式定义了一个高层接口，这个接口使得这一子系统更加容易使用(复用)。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_1nIaIXJNgf.png"></p>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>从客户程序的角度来看，Facade模式简化了整个组件系统的接口对于组件内部与外部客户程序来说，达到了一种“解耦”的效果一内部子系统的任何变化不会影响到Facade接口的变化:</p>
-<p>Facade设计模式更注重从架构的层次去看整个系统，而不是单个类的层次。Facade很多时候更是一种架构设计模式。</p>
-<p>Façade设计模式并非一个集装箱，可以任意地放进任何多个对象，Façade模式中组件的内部应该是“相互耦合关系比较大的一系列组件”，而不是一个简单的功能集合</p>
-</li>
-</ul>
-<h3 id="代理模式（Proxy）"><a href="#代理模式（Proxy）" class="headerlink" title="代理模式（Proxy）"></a>代理模式（Proxy）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在面向对象系统中，有些对象由于某种原因(比如对象创建的开销很大，或者某些操作需要安全控制，或者需要进程外的访问等直接访问会给使用者、或者系统结构带来很多麻烦。</p>
-<p>如何在不失去透明操作对象的同时来管理&#x2F;控制这些对象特有的复杂性?增加一层间接层是软件开发中常见的解决方式。</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>为其他对象提供一种代理以控制(隔离，使用接口)对这个对象的访问。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_QtJw68_28q.png"></p>
-</li>
-<li><p><strong>代码示例</strong></p>
-<h4 id="改造前"><a href="#改造前" class="headerlink" title="改造前"></a>改造前</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ISubject</span>&#123;</span><br><span class="line">Ipublic:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RealSubject</span>:<span class="keyword">public</span> ISubject&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClientApp</span>&#123;</span><br><span class="line">    ISubject* subject;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">ClientApp</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;subject = <span class="keyword">new</span> RealSubject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">DoTask</span><span class="params">()</span></span>&#123;</span><br><span class="line">        subject-&gt;<span class="built_in">process</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="改造后"><a href="#改造后" class="headerlink" title="改造后"></a>改造后</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ISubject</span>&#123;</span><br><span class="line">Ipublic:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//Proxy的设计</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SubjectProxy</span>:<span class="keyword">public</span> ISubject&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//对RealSubject的一种间接访问</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClientApp</span>&#123;</span><br><span class="line">    ISubject* subject;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">ClientApp</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;subject = <span class="keyword">new</span> <span class="built_in">SubjectProxy</span>();;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">DoTask</span><span class="params">()</span></span>&#123;</span><br><span class="line">        subject-&gt;<span class="built_in">process</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>要点总结</strong></p>
-<p>“增加一层间接层”是软件系统中对许多复杂问题的一种常见解决方法。在面向对象系统中，直接使用某些对象会带来很多问题，作为间接层的proxy对象便是解决这一问题的常用手段。</p>
-<p>具体proxy设计模式的实现方法、实现粒度都相差很大，有些可能对单个对象做细粒度的控制，如copy-on-write技术，有些可能对组件模块提供抽象代理层,在架构层次对对象做proxy。</p>
-<p>Proxy并不一定要求保持接口完整的一致性，只要能够实现间接控制，有时候损及一些透明性是可以接受的。</p>
-</li>
-</ul>
-<h3 id="适配器模式（Adapter）"><a href="#适配器模式（Adapter）" class="headerlink" title="适配器模式（Adapter）"></a>适配器模式（Adapter）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件系统中，由于应用环境的变化，常常需要将“一些现存的对象”放在新的环境中应用，但是新环境要求的接口是这些现存对象所不满足的。</p>
-<p>如何应对这种“迁移的变化”?如何既能利用现有对象的良好实现同时又能满足新的应用环境所要求的接口?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>将一个类的接口转换成客户希望的另一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_8hmfQUjb-o.png"></p>
-</li>
-<li><p><strong>代码示例</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="comment">// 目标接口，新接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ITarget</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 遗留接口，老接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IAdaptee</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">foo</span><span class="params">(<span class="type">int</span> data)</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">bar</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OldClass</span>:<span class="keyword">public</span> IAdaptee&#123;</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对象适配器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span>:<span class="keyword">public</span> ITarget&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    IAdaptee* pAdaptee;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Adapter</span>(IAdaptee* iAdap):<span class="built_in">pAdaptee</span>(iAdap)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> data = pAdaptee-&gt;<span class="built_in">bar</span>();</span><br><span class="line">        pAdaptee-&gt;<span class="built_in">foo</span>(data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 类适配器(不建议)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span>:<span class="keyword">public</span> ITarget，<span class="keyword">protected</span> IAdaptee&#123;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    IAdaptee* pAdaptee = <span class="keyword">new</span> <span class="built_in">OldClass</span>();</span><br><span class="line">    ITarget* pTarget = <span class="keyword">new</span> <span class="built_in">Adapter</span>(pAdaptee);</span><br><span class="line">    pTarget-&gt;<span class="built_in">process</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>要点总结</strong></p>
-<p>Adapter模式主要应用于“希望复用一些现存的类，但是接口又与复用环境要求不一致的情况”，在遗留代码复用、类库迁移等方面非常有用。</p>
-<p>GoF 23 定义了两种Adapter模式的实现结构:对象适配器和类适配器。但类适配器采用“多继承”的实现方式，一般不推荐使用。对象适配器采用“对象组合”的方式，更符合松耦合精神。</p>
-<p>Adapter模式可以实现的非常灵活，不必拘泥于Gof23中定义的两种结构。例如，完全可以将Adapter模式中的“现存对象”作为新的接口方法参数，来达到适配的目的。</p>
-</li>
-</ul>
-<h3 id="中介者模式（Mediator）"><a href="#中介者模式（Mediator）" class="headerlink" title="中介者模式（Mediator）"></a>中介者模式（Mediator）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件构建过程中，经常会出现多个对象互相关联交互的情况，对象之间常常会维持一种复杂的引用关系，如果遇到一些需求的更改，这种直接的引用关系将面临不断的变化。</p>
-<p>在这种情况下，我们可使用一个“中介对象”来管理对象间的关联关系，避免相互交互的对象之间的紧耦合引用关系，从而更好地抵御变化。</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>用一个中介对象来封装(封装变化)一系列的对象交互。中介者使各对象不需要显式的相互引用(编译时依赖→运行时依赖)，从而使其耦合松散(管理变化)，而且可以独立地改变它们之间的交互。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image__2gjJYICvG.png"></p>
-<p><img src="/image/image_wBicwfBkpw.png"></p>
-</li>
-<li><p><strong>要点总结</strong></p>
-<p>将多个对象间复杂的关联关系解耦，Mediator模式将多个对象间的控制逻辑进行集中管理，变“多个对象互相关联”为“多个对象和一个中介者关联”简化了系统的维护，抵御了可能的变化。</p>
-<p>随着控制逻辑的复杂化，Mediator具体对象的实现可能相当复杂。这时候可以对Mediator对象进行分解处理。</p>
-<p>Facade模式是解耦系统间(单向)的对象关联关系;Mediator模式是解耦系统内各个对象之间(双向)的关联关系。</p>
-</li>
-</ul>
-<h2 id="状态变化"><a href="#状态变化" class="headerlink" title="状态变化"></a>状态变化</h2><ul>
-<li><p><strong>概念</strong></p>
-<p>在组件构建过程中，某些对象的状态经常面临变化，如何对这些变化进行有效的管理?同时又维持高层模块的稳定?“状态变化”模式为这一问题提供了一种解决方案。</p>
-</li>
-</ul>
-<h3 id="状态模式（State）"><a href="#状态模式（State）" class="headerlink" title="状态模式（State）"></a>状态模式（State）</h3><ul>
-<li><p><strong>动机</strong></p>
-<p>在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为就可能完全不同。</p>
-<p>如何在运行时根据对象的状态来透明地更改对象的行为?而不会为对象操作和状态转化之间引入紧耦合?</p>
-</li>
-<li><p><strong>模式定义</strong></p>
-<p>允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为。</p>
-</li>
-<li><p><strong>类图</strong></p>
-<p><img src="/image/image_-NnMDbT8Iy.png"></p>
-</li>
-<li><p><strong>代码示例</strong></p>
-<h4 id="改造前-1"><a href="#改造前-1" class="headerlink" title="改造前"></a><strong>改造前</strong></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">NetworkState</span>&#123;</span><br><span class="line">    Network_Open,</span><br><span class="line">    Network_Close,</span><br><span class="line">    Metwork_Connect,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkProcessor</span>&#123;</span><br><span class="line">    NetworkState state;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(state== Network_Open)&#123;</span><br><span class="line">            <span class="comment">//*************</span></span><br><span class="line">            state = Network_Close;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(state== Network_Close)&#123;</span><br><span class="line">            <span class="comment">//*************</span></span><br><span class="line">            state = Metwork_Connect;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(state== Metwork_Connect)&#123;</span><br><span class="line">            <span class="comment">//*************</span></span><br><span class="line">            state = Network_Open;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//同上</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//同上</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="改造后-1"><a href="#改造后-1" class="headerlink" title="改造后"></a>改造后</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkState</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    NetworkState* pNext;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">NetworkState</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OpenState</span>:<span class="keyword">public</span> NetworkState&#123;</span><br><span class="line">    <span class="type">static</span> NetworkState* state;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> NetworkState* <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(state==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">            state = <span class="keyword">new</span> <span class="built_in">OpenState</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//***********</span></span><br><span class="line">        pNext = CloseState::<span class="built_in">getInstance</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//***********</span></span><br><span class="line">        pNext = ConnectSate::<span class="built_in">getInstance</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//***********</span></span><br><span class="line">        pNext = OpenState::<span class="built_in">getInstance</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConnectSate</span>:<span class="keyword">public</span> NetworkState&#123;</span><br><span class="line">    <span class="comment">//*******</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CloseState</span>:<span class="keyword">public</span> NetworkState&#123;</span><br><span class="line">    <span class="comment">//*******</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkProcessor</span>&#123;</span><br><span class="line">    NetworkState* pState;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//*************</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operation1</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;pState = pState-&gt;pNext;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//*************</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operation2</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;pState = pState-&gt;pNext;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//*************</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operation3</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;pState = pState-&gt;pNext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>要点总结</strong></p>
-<p>State模式将所有与一个特定状态相关的行为都放入一个State的子类对象中，在对象状态切换时，切换相应的对象;但同时维持State的接口，这样实现了具体操作与状态转换之间的解耦。</p>
-<p>为不同的状态引入不同的对象使得状态转换变得更加明确，而且可以保证不会出现状态不一致的情况，因为转换是原子性的——要么彻底转换过来，要么不转换。</p>
-<p>如果State对象没有实例变量，那么各个上下文可以共享同一个State对象，从而节省对象开销。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-C-" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -932,6 +379,71 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/10/06/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">计算机组成原理</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-10-06T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C++设计模式</p>
+        
+          <a class="article-more-a" href="/2022/10/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/10/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
         </p>
       
 
