@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com+">
-  <title>Archives: 2024 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="数据结构   模式 Composite、Iterator、Chain of Resposibility     概念 常常有一些组件在内部具有特定的数据结构，如果让客户程序依赖这些特定的数据结构，将极大地破坏组件的复用。这时候，将这些特定数据结构封装在内部，在外部提供统一的接口，来实现与特定数据结构无关的访问，是一种行之有效的解决方案。   组合模式（Composite） 动机 在软件在某些情况下">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com+/archives/2024/index.html">
+<meta property="og:url" content="http://example.com+/2024/05/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据结构   模式 Composite、Iterator、Chain of Resposibility     概念 常常有一些组件在内部具有特定的数据结构，如果让客户程序依赖这些特定的数据结构，将极大地破坏组件的复用。这时候，将这些特定数据结构封装在内部，在外部提供统一的接口，来实现与特定数据结构无关的访问，是一种行之有效的解决方案。   组合模式（Composite） 动机 在软件在某些情况下">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com+/image/image_13W2V0AaEo.png">
+<meta property="og:image" content="http://example.com+/image/image_qGehW1EXlY.png">
+<meta property="og:image" content="http://example.com+/image/image_4PEAINYALm.png">
+<meta property="article:published_time" content="2024-05-21T09:33:12.814Z">
+<meta property="article:modified_time" content="2024-05-21T09:30:07.946Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com+/image/image_13W2V0AaEo.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -146,238 +154,237 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数据结构/数据结构" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>Composite、Iterator、Chain of Resposibility</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><p><strong>概念</strong></p>
+<p>常常有一些组件在内部具有特定的数据结构，如果让客户程序依赖这些特定的数据结构，将极大地破坏组件的复用。这时候，将这些特定数据结构封装在内部，在外部提供统一的接口，来实现与特定数据结构无关的访问，是一种行之有效的解决方案。</p>
+</li>
+</ul>
+<h3 id="组合模式（Composite）"><a href="#组合模式（Composite）" class="headerlink" title="组合模式（Composite）"></a>组合模式（Composite）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件在某些情况下，客户代码过多地依赖于对象容器复杂的内部实现结构，对象容器内部实现结构(而非抽象接口)的变化将引起客户代码的频繁变化，带来了代码的维护性、扩展性等弊端。</p>
+<p>如何将“客户代码与复杂的对象容器结构”解耦?让对象容器自己来实现自身的复杂结构，从而使得客户代码就像处理简单对象一样来处理复杂的对象容器?</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>将对象组合成树形结构以表示“部分-整体”的层次结构。</p>
+<p>Composite使得用户对单个对象和组合对象的使用具有一致性(稳定)</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_13W2V0AaEo.png"></p>
+</li>
+<li><p><strong>代码示例</strong></p>
+<ul>
+<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Component</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Component</span>()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>派生类</strong><ul>
+<li><strong>树节点</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Composite</span>:<span class="keyword">public</span> Component&#123;</span><br><span class="line">    string name;</span><br><span class="line">    list&lt;Component*&gt; elements;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Composite</span>(<span class="type">const</span> string&amp; s):<span class="built_in">name</span>(s)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(Component* element)</span></span>&#123;</span><br><span class="line">        elements.<span class="built_in">push_back</span>(element);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(Component* element)</span></span>&#123;</span><br><span class="line">        elements.<span class="built_in">remove</span>(element);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;e:elements)&#123;</span><br><span class="line">            e-&gt;<span class="built_in">process</span>();<span class="comment">//多态调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>叶子节点</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Leaf</span>:<span class="keyword">public</span> Component&#123;</span><br><span class="line">    string name;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Leaf</span>(string s):<span class="built_in">name</span>(s)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>要点总结</strong></p>
+<p>Composite模式采用树形结构来实现普遍存在的对象容器，从而将“一对多”的关系转化为“一对一”的关系，使得客户代码可以一致地(复用)处理对象和对象容器，无需关心处理的是单个的对象，还是组合的对象容器。</p>
+<p>将“客户代码与复杂的对象容器结构”解耦是Composite的核心思想<br>解耦之后，客户代码将与纯粹的抽象接口–而非对象容器的内部实现结构–发生依赖，从而更能“应对变化”</p>
+<p>Composite模式在具体实现中，可以让父对象中的子对象反向追溯；如果父对象有频繁的遍历需求，可使用缓存技巧来改善效率。</p>
+</li>
+</ul>
+<h3 id="迭代器模式（Iterator）"><a href="#迭代器模式（Iterator）" class="headerlink" title="迭代器模式（Iterator）"></a>迭代器模式（Iterator）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件构建过程中，集合对象内部结构常常变化各异。但对于这些集合对象，我们希望在不暴露其内部结构的同时，可以让外部客户代码透明地访问其中包含的元素;同时这种“透明遍历”也为“同一种算法在多种集合对象上进行操作”提供了可能。</p>
+<p>使用面向对象技术将这种遍历机制抽象为“迭代器对象”为“应对变化中的集合对象”提供了一种优雅的方式。</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露(稳定)该对象的内部表示。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_qGehW1EXlY.png"></p>
+</li>
+<li><p><strong>代码示例</strong></p>
+<ul>
+<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Iterator</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">first</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">next</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">isDone</span><span class="params">()</span><span class="type">const</span> </span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> T&amp; <span class="title">current</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCollection</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Iterator&lt;T&gt; <span class="title">GetIterator</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>派生类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CollectionIterator</span>:<span class="keyword">public</span> Iterator&lt;T&gt;&#123;</span><br><span class="line">    MyCollection&lt;T&gt; mc;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">CollectionIterator</span>(<span class="type">const</span> MyCollection&lt;T&gt; &amp; c):<span class="built_in">mc</span>(c)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">first</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">next</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">isDone</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> T&amp; <span class="title">current</span><span class="params">()</span><span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MyAlgorithm</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MyCollection&lt;<span class="type">int</span>&gt; mc;</span><br><span class="line">    Iterator&lt;<span class="type">int</span>&gt; iter = mc.<span class="built_in">GetIterator</span>();</span><br><span class="line">    <span class="keyword">for</span>(iter.<span class="built_in">first</span>();!iter.<span class="built_in">isDone</span>();iter.<span class="built_in">next</span>())&#123;</span><br><span class="line">        cout&lt;&lt;iter.<span class="built_in">current</span>()&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>要点总结</strong></p>
+<p>迭代抽象:访问一个聚合对象的内容而无需暴露它的内部表示。</p>
+<p>迭代多态:为遍历不同的集合结构提供一个统一的接口，从而支持同样的算法在不同的集合结构上进行操作。</p>
+<p>迭代器的健壮性考虑:遍历的同时更改迭代器所在的集合结构，会导致问题。</p>
+</li>
+</ul>
+<h3 id="职责链模式（Chain-of-Resposibility）"><a href="#职责链模式（Chain-of-Resposibility）" class="headerlink" title="职责链模式（Chain of Resposibility）"></a>职责链模式（Chain of Resposibility）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件构建过程中，一个请求可能被多个对象处理，但是每个请求在运行时只能有一个接受者，如果显式指定，将必不可少地带来请求发送者与接受者的紧耦合。</p>
+<p>如何使请求的发送者不需要指定具体的接受者?让请求的接受者自己在运行时决定来处理请求，从而使两者解耦。</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递请求，直到有一个对象处理它为止。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_4PEAINYALm.png"></p>
+</li>
+<li><p><strong>代码示例</strong></p>
+<ul>
+<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum class</span> <span class="title class_">RequestType</span></span><br><span class="line">    REQ_HANDLER1,</span><br><span class="line">    REQ_HANDLER2,</span><br><span class="line">    REQ_HANDLER3</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Request</span></span><br><span class="line">&#123;</span><br><span class="line">    string desc;</span><br><span class="line">    RequestType reqType;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Request</span>(<span class="type">const</span> string&amp;desc,RequestType type):<span class="built_in">desc</span>(desc),<span class="built_in">reqType</span>(type)&#123;&#125;</span><br><span class="line">    <span class="function">RequestType <span class="title">getReqType</span><span class="params">()</span><span class="type">const</span></span>&#123;<span class="keyword">return</span> reqType;&#125;</span><br><span class="line">    <span class="function"><span class="type">const</span> string&amp; <span class="title">getDescription</span><span class="params">()</span><span class="type">const</span></span>&#123;<span class="keyword">return</span> desc;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChainHandler</span>&#123;</span><br><span class="line">    ChainHandler * nextChain;<span class="comment">//下一个链表节点</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">sendRequestToNextHandler</span><span class="params">(<span class="type">const</span> Request&amp; req)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nextChain!=<span class="literal">nullptr</span>)&#123;</span><br><span class="line">            nextChain-&gt;<span class="built_in">handle</span>(req);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">canHandleRequest</span><span class="params">(<span class="type">const</span> Request&amp;req)</span> </span>= <span class="number">0</span>;<span class="comment">//是否能够处理</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">processRequest</span><span class="params">(<span class="type">const</span> Request&amp;req)</span> </span>= <span class="number">0</span>;<span class="comment">//处理逻辑</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">handle</span><span class="params">(<span class="type">const</span> Request &amp;req)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">canHandleRequest</span>(req))</span><br><span class="line">            <span class="built_in">processRequest</span>(req);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">sendRequestToNextHandler</span>(req);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>派生类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Handler1</span>:<span class="keyword">public</span> ChainHandler&#123;</span><br><span class="line">    <span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">bool</span> <span class="title">canHandleRequest</span><span class="params">(<span class="type">const</span> Request&amp;req)</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">processRequest</span><span class="params">(<span class="type">const</span> Request&amp;req)</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>要点总结</strong></p>
+<p>Chain of Responsibility 模式的应用场合在于“一个请求可能有多个接受者，但是最后真正的接受者只有一个”这时候请求发送者与接受者的耦合有可能出现“变化脆弱”的症状，职责链的目的就是将二者解耦，从而更好地应对变化。</p>
+<p>应用了Chain ofResponsibility 模式后，对象的职责分派将更具灵活性。我们可以在运行时动态添加&#x2F;修改请求的处理职责。</p>
+<p>如果请求传递到职责链的末尾仍得不到处理，应该有一个合理的缺省机制。这也是每一个接受对象的责任，而不是发出请求的对象的责任。</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98/%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.820Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com+/2024/05/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2024/05/21/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/05/21/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.816Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.814Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.813Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.802Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2024-05-20T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">C++设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -400,8 +407,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

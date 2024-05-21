@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com+">
-  <title>Archives: 2024 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="对象创建   模式 Factory Method、Abstract Factory、Prototype、Builder     概念 通过“对象创建”模式绕开new，来避免对象创建(new)过程中所导致的紧耦合(依赖具体类)从而支持对象创建的稳定。它是接口抽象之后的第一步工作。   工厂方法（Factory） 动机 在软件系统中，经常面临着创建对象的工作;由于需求的变化，需要创建的对象的具体类型经">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com+/archives/2024/index.html">
+<meta property="og:url" content="http://example.com+/2024/05/21/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对象创建   模式 Factory Method、Abstract Factory、Prototype、Builder     概念 通过“对象创建”模式绕开new，来避免对象创建(new)过程中所导致的紧耦合(依赖具体类)从而支持对象创建的稳定。它是接口抽象之后的第一步工作。   工厂方法（Factory） 动机 在软件系统中，经常面临着创建对象的工作;由于需求的变化，需要创建的对象的具体类型经">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com+/image/image_L5AczgspHr.png">
+<meta property="og:image" content="http://example.com+/image/image_gSF5UmvYgV.png">
+<meta property="og:image" content="http://example.com+/image/image_nHw6Z65Gwk.png">
+<meta property="og:image" content="http://example.com+/image/image_YwApRvv73G.png">
+<meta property="article:published_time" content="2024-05-21T09:33:12.802Z">
+<meta property="article:modified_time" content="2024-05-21T09:30:07.937Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com+/image/image_L5AczgspHr.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -146,238 +155,256 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-对象创建/对象创建" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="对象创建"><a href="#对象创建" class="headerlink" title="对象创建"></a>对象创建</h1><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>Factory Method、Abstract Factory、Prototype、Builder</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><p><strong>概念</strong></p>
+<p>通过“对象创建”模式绕开new，来避免对象创建(new)过程中所导致的紧耦合(依赖具体类)从而支持对象创建的稳定。它是接口抽象之后的第一步工作。</p>
+</li>
+</ul>
+<h3 id="工厂方法（Factory）"><a href="#工厂方法（Factory）" class="headerlink" title="工厂方法（Factory）"></a>工厂方法（Factory）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件系统中，经常面临着创建对象的工作;由于需求的变化，需要创建的对象的具体类型经常变化。</p>
+<p>如何应对这种变化?如何绕过常规的对象创建方法(new)，提供一种“封装机制”来避免客户程序和这种“具体对象创建工作”的紧耦合?</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>定义一个用于创建对象的接口，让子类决定实例化哪一个类Factory Method使得一个类的实例化延迟(目的:解耦，手段:虚函数)到子类。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_L5AczgspHr.png"></p>
+</li>
+<li><p><strong>代码实例</strong></p>
+<ul>
+<li><strong>被生产的类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象基类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ISplitter</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">ISplitter</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BinarySplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxtSplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>工厂类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SplitterFactory</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">SplitterFactory</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BinarySplitterFactory</span>:<span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">BinarySplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxtSplitterFactory</span>:<span class="keyword">public</span> SplitterFactory&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">CreateSplitter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TxtSplitter</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>要点总结</strong></p>
+<p>Factory Method模式用于隔离类对象的使用者和具体类型之间的耦合关系。面对一个经常变化的具体类型，紧耦合关系(new)会导致软件的脆弱。</p>
+<p>Factory Method模式通过面向对象的手法，将所要创建的具体对象工作延迟到子类，从而实现一种扩展(而非更改)的策略，较好地解决了这种紧耦合关系。</p>
+<p>Factory Method模式解决“单个对象”的需求变化。缺点在于要求创建方法&#x2F;参数相同。</p>
+</li>
+</ul>
+<h3 id="抽象工厂（Abstract-Factory）"><a href="#抽象工厂（Abstract-Factory）" class="headerlink" title="抽象工厂（Abstract Factory）"></a>抽象工厂（Abstract Factory）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件系统中，经常面临着“一系列相互依赖的对象”的创建工作;同时，由于需求的变化，往往存在更多系列对象的创建工作。</p>
+<p>如何应对这种变化?如何绕过常规的对象创建方法(new)，提供一种“封装机制”来避免客户程序和这种“多系列具体对象创建工作”的紧耦合?</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>提供一个接口，让该接口负责创建一系列“相关或者相互依赖的对象”，无需指定它们具体的类。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_gSF5UmvYgV.png"></p>
+</li>
+<li><p><strong>代码示例</strong></p>
+<h4 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h4><ul>
+<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据库连接的抽象类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBConnection</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBConnectionFactory</span>&#123;  <span class="comment">//工厂抽象基类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBCommand</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBCommandFactory</span>&#123;  <span class="comment">//工厂抽象基类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDataReader</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDataReaderFactory</span>&#123;  <span class="comment">//工厂抽象基类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>具体类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支持SQL Server</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlConnectionFactory</span>:<span class="keyword">public</span> IDBConnectionFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlConnection;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlCommandFactory</span>:<span class="keyword">public</span> IDBCommandFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlCommand;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDataReaderFactory</span>:<span class="keyword">public</span> IDBConnectionFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlDataReader;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 支持Oracle(同上)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="抽象工厂改造（由于数据库对象的关联性）"><a href="#抽象工厂改造（由于数据库对象的关联性）" class="headerlink" title="抽象工厂改造（由于数据库对象的关联性）"></a>抽象工厂改造（由于数据库对象的关联性）</h4><ul>
+<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据库连接的抽象类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBConnection</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBCommand</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDataReader</span>&#123;&#125;;</span><br><span class="line"><span class="comment">// 融合</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDBFactory</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>具体类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支持SQL Server</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SqlDBFactory</span>:<span class="keyword">public</span> IDBFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBConnection* <span class="title">CreateDBConnection</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlConnection;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDBCommand* <span class="title">CreateDBCommand</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlCommand;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> IDataReader* <span class="title">CreateDataReader</span><span class="params">()</span><span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SqlDataReader;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 支持Oracle(同上)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleConnection</span>:<span class="keyword">public</span> IDBConnection&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleCommand</span>:<span class="keyword">public</span> IDBCommand&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OracleDataReader</span>:<span class="keyword">public</span> IDataReader&#123;&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>要点总结</strong></p>
+<p>如果没有应对“多系列对象构建”的需求变化，则没有必要使用<br>Abstract Factory模式，这时候使用简单的工厂完全可以。</p>
+<p>“系列对象”指的是在某一特定系列下的对象之间有相互依赖、或作用的关系。不同系列的对象之间不能相互依赖。</p>
+<p>Abstract Factory模式主要在于应对“新系列”的需求变动。其缺点在于难以应对“新对象”的需求变动。</p>
+</li>
+</ul>
+<h3 id="原型模式（Prototype）"><a href="#原型模式（Prototype）" class="headerlink" title="原型模式（Prototype）"></a>原型模式（Prototype）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件系统中，经常面临着“某些结构复杂的对象”的创建工作;由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有比较稳定一致的接口。</p>
+<p>如何应对这种变化?如何向“客户程序(使用这些对象的程序)”<br>隔离出“这些易变对象”，从而使得“依赖这些易变对象的客户程序”不随着需求改变而改变?</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>使用原型实例指定创建对象的种类，然后通过拷贝这些原型来创建新的对象。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_nHw6Z65Gwk.png"></p>
+</li>
+<li><p><strong>代码实例</strong></p>
+<ul>
+<li><strong>抽象类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象基类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ISplitter</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter*<span class="title">clone</span><span class="params">()</span> </span>= <span class="number">0</span>;<span class="comment">//通过克隆自己来创建对象</span></span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">ISplitter</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>具体类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BinarySplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">clone</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">BinarySplitter</span>(*<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TxtSplitter</span>:<span class="keyword">public</span> ISplitter&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ISplitter* <span class="title">clone</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TxtSplitter</span>(*<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">split</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>主类</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MainForm</span>&#123;</span><br><span class="line">    ISplitter* protoType;<span class="comment">//仅仅用于克隆</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MainForm</span>(ISplitter* protoType)&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;protoType = protoType;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">click_button</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ISplitter* splitter = </span><br><span class="line">              protoType-&gt;<span class="built_in">clone</span>();<span class="comment">//克隆，得到新对象</span></span><br><span class="line">        splitter-&gt;<span class="built_in">split</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>要点总结</strong></p>
+<p>Prototype模式同样用于隔离类对象的使用者和具体类型(易变类)<br>之间的耦合关系，它同样要求这些“易变类”拥有“稳定的接口”</p>
+<p>Prototype模式对于“如何创建易变类的实体对象”采用“原型克隆”的方法来做，它使得我们可以非常灵活地动态创建“拥有某些稳定接口”的新对象——所需工作仅仅是注册一个新类的对象(即原型)然后在任何需要的地方Clone。</p>
+<p>Prototype模式中的Clone方法可以利用某些框架中的序列化来实现深拷贝。</p>
+</li>
+</ul>
+<h3 id="构建器（Builder）"><a href="#构建器（Builder）" class="headerlink" title="构建器（Builder）"></a>构建器（Builder）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件系统中，有时候面临着“一个复杂对象”的创建工作，其通常由各个部分的子对象用一定的算法构成;由于需求的变化，这个复杂对象的各个部分经常面临着剧烈的变化，但是将它们组合在一起的算法却相对稳定。</p>
+<p>如何应对这种变化?如何提供一种“封装机制”来隔离出“复杂对象的各个部分”的变化，从而保持系统中的“稳定构建算法”不随着需求改变而改变?</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>将一个复杂对象的构建与其表示相分离，使得同样的构建过程(稳定)可以创建不同的表示(变化)。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_YwApRvv73G.png"></p>
+</li>
+<li><p><strong>代码实例</strong></p>
+<h4 id="简单的构造器"><a href="#简单的构造器" class="headerlink" title="简单的构造器"></a>简单的构造器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">House</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">step1</span>();</span><br><span class="line">        <span class="built_in">step2</span>();    <span class="comment">//非稳定，晚绑定</span></span><br><span class="line">        <span class="built_in">step3</span>();</span><br><span class="line">        <span class="built_in">step4</span>();    <span class="comment">//非稳定，晚绑定</span></span><br><span class="line">        <span class="built_in">step5</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">House</span>()&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StoneHouse</span>:<span class="keyword">public</span> House&#123;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="复杂的构造器"><a href="#复杂的构造器" class="headerlink" title="复杂的构造器"></a>复杂的构造器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">House</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HouseBuild</span>&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    House* pHouse;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">House* <span class="title">GetResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pHouse;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">HouseBuild</span>()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StoneHouseBuild</span>:<span class="keyword">public</span> HouseBuild&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step1</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step2</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step3</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step4</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">step5</span><span class="params">()</span> <span class="keyword">override</span>  </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HouseDirector</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    HouseBuilder* pHouseBuilder;</span><br><span class="line">    <span class="built_in">HouseDirector</span>(HouseBuilder* pHouseBuilder)&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;pHouseBuilder = pHouseBuilder;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">House* <span class="title">Construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step1</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step2</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step3</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step4</span>();</span><br><span class="line">        pHouseBuilder-&gt;<span class="built_in">step5</span>();</span><br><span class="line">        <span class="keyword">return</span> pHouseBuilder-&gt;<span class="built_in">GetResult</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>要点总结</strong></p>
+<p>Builder 模式主要用于“分步骤构建一个复杂的对象”。在这其中“分步骤”是一个稳定的算法，而复杂对象的各个部分则经常变化。</p>
+<p>变化点在哪里，封装哪里——Builder模式主要在于应对“复杂对象各个部分”的频繁需求变动。其缺点在于难以应对“分步骤构建算法”的需求变动。</p>
+<p>在Builder模式中，要注意不同语言中构造器内调用虚函数的差别</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98/%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.820Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com+/2024/05/21/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2024/05/21/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/05/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.816Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.814Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.813Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.802Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2024-05-20T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">C++设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -400,8 +427,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

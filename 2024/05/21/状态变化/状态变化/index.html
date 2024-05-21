@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com+">
-  <title>Archives: 2024 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="状态变化   模式 Memento、State     概念 在组件构建过程中，某些对象的状态经常面临变化，如何对这些变化进行有效的管理?同时又维持高层模块的稳定?“状态变化”模式为这一问题提供了一种解决方案。   状态模式（State） 动机 在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为就可能完全不同。 如何在运行时根">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com+/archives/2024/index.html">
+<meta property="og:url" content="http://example.com+/2024/05/21/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="状态变化   模式 Memento、State     概念 在组件构建过程中，某些对象的状态经常面临变化，如何对这些变化进行有效的管理?同时又维持高层模块的稳定?“状态变化”模式为这一问题提供了一种解决方案。   状态模式（State） 动机 在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为就可能完全不同。 如何在运行时根">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com+/image/image_zJ7AqYl5vP.png">
+<meta property="og:image" content="http://example.com+/image/image_pxv7SsNnGa.png">
+<meta property="article:published_time" content="2024-05-21T09:33:12.816Z">
+<meta property="article:modified_time" content="2024-05-21T09:30:07.944Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com+/image/image_zJ7AqYl5vP.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -146,238 +153,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-状态变化/状态变化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="状态变化"><a href="#状态变化" class="headerlink" title="状态变化"></a>状态变化</h1><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>Memento、State</th>
+</tr>
+</thead>
+</table>
+<ul>
+<li><p><strong>概念</strong></p>
+<p>在组件构建过程中，某些对象的状态经常面临变化，如何对这些变化进行有效的管理?同时又维持高层模块的稳定?“状态变化”模式为这一问题提供了一种解决方案。</p>
+</li>
+</ul>
+<h3 id="状态模式（State）"><a href="#状态模式（State）" class="headerlink" title="状态模式（State）"></a>状态模式（State）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件构建过程中，某些对象的状态如果改变，其行为也会随之而发生变化，比如文档处于只读状态，其支持的行为和读写状态支持的行为就可能完全不同。</p>
+<p>如何在运行时根据对象的状态来透明地更改对象的行为?而不会为对象操作和状态转化之间引入紧耦合?</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>允许一个对象在其内部状态改变时改变它的行为。从而使对象看起来似乎修改了其行为。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_zJ7AqYl5vP.png"></p>
+</li>
+<li><p><strong>代码示例</strong></p>
+<h4 id="改造前"><a href="#改造前" class="headerlink" title="改造前"></a><strong>改造前</strong></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">NetworkState</span>&#123;</span><br><span class="line">    Network_Open,</span><br><span class="line">    Network_Close,</span><br><span class="line">    Metwork_Connect,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkProcessor</span>&#123;</span><br><span class="line">    NetworkState state;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(state== Network_Open)&#123;</span><br><span class="line">            <span class="comment">//*************</span></span><br><span class="line">            state = Network_Close;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(state== Network_Close)&#123;</span><br><span class="line">            <span class="comment">//*************</span></span><br><span class="line">            state = Metwork_Connect;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(state== Metwork_Connect)&#123;</span><br><span class="line">            <span class="comment">//*************</span></span><br><span class="line">            state = Network_Open;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//同上</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//同上</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="改造后"><a href="#改造后" class="headerlink" title="改造后"></a>改造后</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkState</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    NetworkState* pNext;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">NetworkState</span>()&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OpenState</span>:<span class="keyword">public</span> NetworkState&#123;</span><br><span class="line">    <span class="type">static</span> NetworkState* state;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> NetworkState* <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(state==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">            state = <span class="keyword">new</span> <span class="built_in">OpenState</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//***********</span></span><br><span class="line">        pNext = CloseState::<span class="built_in">getInstance</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//***********</span></span><br><span class="line">        pNext = ConnectSate::<span class="built_in">getInstance</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//***********</span></span><br><span class="line">        pNext = OpenState::<span class="built_in">getInstance</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConnectSate</span>:<span class="keyword">public</span> NetworkState&#123;</span><br><span class="line">    <span class="comment">//*******</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CloseState</span>:<span class="keyword">public</span> NetworkState&#123;</span><br><span class="line">    <span class="comment">//*******</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NetworkProcessor</span>&#123;</span><br><span class="line">    NetworkState* pState;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//*************</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operation1</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;pState = pState-&gt;pNext;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//*************</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operation2</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;pState = pState-&gt;pNext;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Operation3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//*************</span></span><br><span class="line">        pState-&gt;<span class="built_in">Operation3</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;pState = pState-&gt;pNext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>要点总结</strong></p>
+<p>State模式将所有与一个特定状态相关的行为都放入一个State的子类对象中，在对象状态切换时，切换相应的对象;但同时维持State的接口，这样实现了具体操作与状态转换之间的解耦。</p>
+<p>为不同的状态引入不同的对象使得状态转换变得更加明确，而且可以保证不会出现状态不一致的情况，因为转换是原子性的——要么彻底转换过来，要么不转换。</p>
+<p>如果State对象没有实例变量，那么各个上下文可以共享同一个State对象，从而节省对象开销。</p>
+</li>
+</ul>
+<h3 id="备忘录（Memento）"><a href="#备忘录（Memento）" class="headerlink" title="备忘录（Memento）"></a>备忘录（Memento）</h3><ul>
+<li><p><strong>动机</strong></p>
+<p>在软件构建过程中，某些对象的状态在转换过程中，可能由于某种需要，要求程序能够回溯到对象之前处于某个点时的状态。如果使用一些公有接口来让其他对象得到对象的状态，便会暴露对象的细节实现。</p>
+<p>如何实现对象状态的良好保存与恢复?但同时又不会因此而破坏对象本身的封装性。</p>
+</li>
+<li><p><strong>模式定义</strong></p>
+<p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样以后就可以将该对象恢复到原先保存的状态。</p>
+</li>
+<li><p><strong>类图</strong></p>
+<p><img src="/image/image_pxv7SsNnGa.png"></p>
+</li>
+<li><p><strong>代码示例</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 备忘录</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Memento</span>&#123;</span><br><span class="line">    string state;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Memento</span>(<span class="type">const</span> string &amp;s):<span class="built_in">state</span>(s)&#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setState</span><span class="params">(<span class="type">const</span> string state)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;state = state;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">string <span class="title">getState</span><span class="params">()</span><span class="type">const</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>-&gt;state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 原始</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Originator</span>&#123;</span><br><span class="line">    string state;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Originator</span>()&#123;&#125;</span><br><span class="line">    <span class="function">Memento <span class="title">createMomento</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="function">Memento <span class="title">m</span><span class="params">(state)</span></span>;</span><br><span class="line">        <span class="keyword">return</span> m;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setMomento</span><span class="params">(<span class="type">const</span> Memento &amp; m)</span></span>&#123;</span><br><span class="line">        state = m.<span class="built_in">getSate</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Originator orginator;</span><br><span class="line">    <span class="comment">// 捕获对象状态，存储到备忘录</span></span><br><span class="line">    Memento mem = originator.<span class="built_in">createMomento</span>();</span><br><span class="line">    <span class="comment">//.. orginator被改变</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 从备忘录中恢复</span></span><br><span class="line">    orginator.<span class="built_in">setMomento</span>(mem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>要点总结</strong></p>
+<p>备忘录(Memento)存储原发器(Originator)对象的内部状态在需要时恢复原发器状态。</p>
+<p>Memento模式的核心是信息隐藏，即Originator需要向外接隐藏信息，保持其封装性。但同时又需要将状态保持到外界(Memento)</p>
+<p>由于现代语言运行时(如C#、Java等)都具有相当的对象序列化支持，因此往往采用效率较高、又较容易正确实现的序列化方案来实现Memento模式。</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98/%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.820Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com+/2024/05/21/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96/%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2024/05/21/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/05/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.816Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.814Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.813Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.802Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/21/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3/" class="archive-article-date">
-  	<time datetime="2024-05-21T09:33:12.798Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-21</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2024-05-20T03:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">C++设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -400,8 +370,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
